@@ -1,4 +1,4 @@
-import SignUp from "./auth/SignUp";
+import SignUp from "./Auth/SignUp";
 import LogIn from "./Auth/LogIn";
 import Navbar from "./Navbar/Navbar";
 import Home from './Home/Home'
