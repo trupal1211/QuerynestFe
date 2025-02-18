@@ -1,0 +1,432 @@
+html{
+    font-size: 16px;
+}
+
+/* Scrollbar Track */
+::-webkit-scrollbar {
+    width: 4px;  
+    height: 4px; 
+}
+
+/* Track (Background) */
+::-webkit-scrollbar-track {
+    background: transparent;  /* No background */
+}
+
+/* Scrollbar Thumb (Draggable part) */
+::-webkit-scrollbar-thumb {
+    background: #dfcfb5; 
+    border-radius: 10px; /* Rounded corners */
+    transition: background 0.3s ease-in-out;
+}
+
+/* On Hover - More Visible */
+::-webkit-scrollbar-thumb:hover {
+    background: #DEC498;  /* Darker on hover */
+}
+
+.main_container{
+    width: 90vw;
+    background-color: inherit;
+    /* border: 1px solid black; */
+    margin: 20px auto 0px;
+    height: calc(100vh - 110px);
+    overflow-x: auto;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.query{
+    width: 70%;
+    background-color: white;
+    margin-left: 16px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    position: relative;
+    border-radius: 4px;
+    border-top-left-radius: 0px;
+    line-height: 1.5;
+    font-size: .9rem;
+    padding: 10px 15px;
+    box-sizing: border-box;
+}
+
+.query::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0px 20px 20px 0;
+    border-radius: 0;
+    border-color: transparent #ffffff transparent transparent;
+}
+
+.query .header{
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile_information{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.header img{
+    width:45px;
+    height:45px;    
+}
+
+.header p{
+    margin: 0;
+}
+
+.image_container{
+    height: 45px;
+    width: 45px;
+}
+
+
+.username{
+    font-size: 12px;
+    color: rgb(174, 174, 174);
+}
+
+.timestamp{
+    font-size: .8rem;
+    margin-right: 10px;
+    color: rgb(181, 181, 181);
+}
+
+.content p{
+    margin:10px 0 ;
+    font-size: 14px;
+    color: rgb(47, 47, 47);
+}
+
+.query_footer{
+    border-top: 1px solid rgb(205, 205, 205);
+}
+
+
+.query_footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+
+.like{
+    justify-content: space-between;
+}
+
+.like p{
+    margin: 0;
+}
+
+
+.comment p{
+    margin: 0;
+}
+
+.query_footer{
+    padding: 8px 0 4px;
+}
+
+
+.like-button, .comment-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: gray;
+  transition: color 0.3s ease;
+}
+
+.like-button:hover, .comment-button:hover {
+  color: black;
+}
+
+.liked{
+    color: black;  
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+
+
+/* query question btn */
+
+.query_input{
+    background-color: aqua;
+    width: 60vw;
+    height: 100px;
+}
+
+
+
+/* sticky add-btn */
+
+.add_btn{
+    width: 55px;
+    height: 55px;
+    background-color: #DEC498;
+    font-size:60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    font-family: 'jua';
+    position: absolute;
+    bottom: 4vh;
+    right: calc(5vw + 10px);
+    cursor: pointer;
+}
+
+.add_btn p{
+    margin: 0;
+    margin-top: 15px;
+}
+
+
+
+
+
+
+@media(max-width:1200px){
+    .querypost_box{
+        width: 50vw !important;
+    }
+}
+  
+  
+
+@media(max-width:900px){
+  
+    .main_container{
+      width: 95vw;
+      height: calc(100vh - 105px);
+    }
+
+    .query{
+        width: 75vw;
+    }
+
+    .add_btn{
+        right: calc(3vw + 10px);
+    }
+
+    .querypost_box{
+        width: 60vw !important;
+    }
+}
+
+@media(max-width:738px){
+    .query{
+        width: 80vw;
+    }   
+
+    .querypost_box{
+        width: 75vw !important;
+    }
+
+}
+
+@media(max-width:600px){
+    .query{
+        width: 85vw;
+    }
+
+    .main_container{
+        height: calc(100vh - 100px);
+    }
+
+    .querypost_box{
+        width: 80vw !important;
+    }
+
+}
+  
+
+@media(max-width:500px){
+
+    .main_container{
+        height: calc(100vh - 90px);
+    }
+    
+    .query{
+        width: 90vw;
+    }
+
+    .querypost_box{
+        width: 85vw !important;
+    }
+}
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* for search querypost_box */
+   
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.302);
+    display: none;
+   
+}
+
+.overlay.active{
+    display: block;
+    display: flex;
+    justify-content: center ;
+    align-items: center ;
+   
+}
+  
+.querypost_box{
+    background: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.052);
+    width: 40vw;
+}
+
+.querypost_box h2{
+    margin: 0 0 15px;
+}
+
+.querypost_box textarea {
+    resize: none;
+    width: 100%;
+    height: 25vh;
+    padding: 10px;
+    padding-top: 18px; 
+    border: .1px solid #cccccc8b;
+    background-color: #FFFDFB;
+    border-radius: 4px;
+    box-sizing: border-box !important;
+    outline: none;
+    font-family: 'kadwa';
+    line-height: 1.5;
+    font-size: 14px;
+    color: rgb(47, 47, 47);
+}
+
+.querypost_box label{
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    transform: translateY(-50%);
+    background: #ffffff;
+    padding: 0 5px;
+    font-size: 16px;
+    color: #aaa;
+    transition: all 0.2s ease-in-out;
+    pointer-events: none;
+  }
+
+  .querypost_box textarea:focus + label,
+  .querypost_box textarea:not(:placeholder-shown) + label {
+    top: 0px;
+    font-size: 14px;
+    color: #deb70c;
+  }
+
+  .querypost_box textarea:focus{
+    border-color:  #deb70c;
+  }
+
+  .form-group {
+    position: relative;
+    width: 100%;
+    margin: 0 auto ;
+  }
+
+.tag-container{
+    display: flex;
+    gap: 8px 10px;
+    flex-wrap: wrap;
+}
+
+.tag-container div{
+    font-size: .8rem;
+    background-color: rgb(238, 243, 255);
+    padding: 3px 14px;
+    color: rgb(114, 114, 255);
+    border-radius: 120px;
+    margin: 0;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.blue{
+    color: white !important;
+    background-color: rgba(9, 9, 255, 0.597) !important;
+}
+
+.btn{
+    padding: 6px 30px;
+    font-size: 14px;
+    border-radius: 60px;
+    cursor: pointer;
+}
+
+.cancel{
+    border: .2px solid rgb(180, 180, 180);
+    color: gray;
+}
+
+.post{
+    background-color: rgb(232, 204, 167);
+    color: white;
+}
+
+.querypost_box .flex{
+    justify-content: end !important;
+    gap: 12px;
+    margin: 20px 0 10px;
+}
+
+.querypost_box p{
+    margin: 0 0 10px 5px;
+    font-size: 12px;
+    color: grey;
+}
+

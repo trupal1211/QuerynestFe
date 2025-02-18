@@ -1,0 +1,127 @@
+ .signup_page{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #FBF5EE;
+    font-family: 'Kadwa';
+    font-size: 16px;
+    display: flex;
+    justify-content: space-evenly !important;
+}
+.left_container{
+    width: 40%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right_container{
+    width: 60%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left_container p {
+    margin: 0;
+}
+
+.welcome_content{
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 38px;
+}
+
+.querynest{
+    font-family: 'Jua';
+    font-size: 46px;
+    color: #DEC498;
+}
+
+.slogan{
+    font-family: 'Jua';
+    font-size: 26px;
+    color: #DEC498;
+    margin-top: 8px !important;
+    margin-left: 90px !important;
+}
+
+.signup_form{
+    width: 58%;
+    background-color: white;
+    border: 1.5px solid #DEC498;
+    border: 1.5px solid #ffffff;
+    border-radius: 12px;
+    box-shadow: -4px 4px 20px #d0d0d0;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.signup_form{
+    text-align: center;
+}
+
+
+.form-group {
+    position: relative;
+    width: 85%;
+    margin: 0 auto 22px;
+  }
+
+.signup_form input {
+    width: 100%;
+    padding: 10px;
+    padding-top: 18px; 
+    border: 1px solid #ccc;
+    background-color: #FFFDFB;
+    border-radius: 4px;
+    box-sizing: border-box !important;
+    outline: none;
+    font-size: 16px;
+  }
+
+  label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    background: #ffffff;
+    padding: 0 5px;
+    font-size: 16px;
+    color: #aaa;
+    transition: all 0.2s ease-in-out;
+    pointer-events: none;
+  }
+
+  .signup_form input:focus + label,
+  .signup_form input:not(:placeholder-shown) + label {
+    top: 0px;
+    font-size: 12px;
+    color: #deb70c;
+  }
+
+  .signup_form input:focus{
+    border-color:  #deb70c;
+  }
+
+
+.signup_btn{
+    width: 85%;
+    padding: 7px;
+    font-size: 18px;
+    background-color: #E9DCC6;
+    border: 1px solid #ECD1A4;
+    border-radius: 4px;
+    font-family: 'kadwa';
+    box-sizing: border-box;
+    font-weight: bolder;
+    color: white;
+}
+
