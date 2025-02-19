@@ -2,6 +2,11 @@ html{
     font-size: 16px;
 }
 
+
+/* ================= for home component ==================== */
+
+/* ===== scroll bar ===== */
+
 /* Scrollbar Track */
 ::-webkit-scrollbar {
     width: 4px;  
@@ -25,6 +30,7 @@ html{
     background: #DEC498;  /* Darker on hover */
 }
 
+
 .main_container{
     width: 90vw;
     background-color: inherit;
@@ -36,149 +42,9 @@ html{
     position: relative;
 }
 
-.query{
-    width: 70%;
-    background-color: white;
-    margin-left: 16px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    position: relative;
-    border-radius: 4px;
-    border-top-left-radius: 0px;
-    line-height: 1.5;
-    font-size: .9rem;
-    padding: 10px 15px;
-    box-sizing: border-box;
-}
-
-.query::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -15px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0px 20px 20px 0;
-    border-radius: 0;
-    border-color: transparent #ffffff transparent transparent;
-}
-
-.query .header{
-    width: 100%;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.profile_information{
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    box-sizing: border-box;
-}
-
-.header img{
-    width:45px;
-    height:45px;    
-}
-
-.header p{
-    margin: 0;
-}
-
-.image_container{
-    height: 45px;
-    width: 45px;
-}
 
 
-.username{
-    font-size: 12px;
-    color: rgb(174, 174, 174);
-}
-
-.timestamp{
-    font-size: .8rem;
-    margin-right: 10px;
-    color: rgb(181, 181, 181);
-}
-
-.content p{
-    margin:10px 0 ;
-    font-size: 14px;
-    color: rgb(47, 47, 47);
-}
-
-.query_footer{
-    border-top: 1px solid rgb(205, 205, 205);
-}
-
-
-.query_footer{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-}
-
-
-.like{
-    justify-content: space-between;
-}
-
-.like p{
-    margin: 0;
-}
-
-
-.comment p{
-    margin: 0;
-}
-
-.query_footer{
-    padding: 8px 0 4px;
-}
-
-
-.like-button, .comment-button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  color: gray;
-  transition: color 0.3s ease;
-}
-
-.like-button:hover, .comment-button:hover {
-  color: black;
-}
-
-.liked{
-    color: black;  
-}
-
-.icon {
-  width: 20px;
-  height: 20px;
-}
-
-
-
-/* query question btn */
-
-.query_input{
-    background-color: aqua;
-    width: 60vw;
-    height: 100px;
-}
-
-
-
-/* sticky add-btn */
+/* ===== btn for post query ===== */
 
 .add_btn{
     width: 55px;
@@ -205,101 +71,9 @@ html{
 
 
 
-
-
-@media(max-width:1200px){
-    .querypost_box{
-        width: 50vw !important;
-    }
-}
-  
-  
-
-@media(max-width:900px){
-  
-    .main_container{
-      width: 95vw;
-      height: calc(100vh - 105px);
-    }
-
-    .query{
-        width: 75vw;
-    }
-
-    .add_btn{
-        right: calc(3vw + 10px);
-    }
-
-    .querypost_box{
-        width: 60vw !important;
-    }
-}
-
-@media(max-width:738px){
-    .query{
-        width: 80vw;
-    }   
-
-    .querypost_box{
-        width: 75vw !important;
-    }
-
-}
-
-@media(max-width:600px){
-    .query{
-        width: 85vw;
-    }
-
-    .main_container{
-        height: calc(100vh - 100px);
-    }
-
-    .querypost_box{
-        width: 80vw !important;
-    }
-
-}
-  
-
-@media(max-width:500px){
-
-    .main_container{
-        height: calc(100vh - 90px);
-    }
-    
-    .query{
-        width: 90vw;
-    }
-
-    .querypost_box{
-        width: 85vw !important;
-    }
-}
-  
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* for search querypost_box */
+/* =============== query post box =========== */
    
+/* avoid background activity */
 .overlay {
     position: fixed;
     top: 0;
@@ -308,17 +82,16 @@ html{
     height: 100%;
     background: rgba(0, 0, 0, 0.302);
     display: none;
-   
 }
 
 .overlay.active{
     display: block;
     display: flex;
     justify-content: center ;
-    align-items: center ;
-   
+    align-items: center ;  
 }
   
+/* =============== query post box =========== */
 .querypost_box{
     background: white;
     padding: 10px 20px;
@@ -332,7 +105,7 @@ html{
     margin: 0 0 15px;
 }
 
-.querypost_box textarea {
+.querypost_box textarea{
     resize: none;
     width: 100%;
     height: 25vh;
@@ -430,3 +203,265 @@ html{
     color: grey;
 }
 
+
+
+
+
+/* ==================== Query Component ====================== */
+
+
+.query{
+    width: 70%;
+    background-color: white;
+    margin-left: 16px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    position: relative;
+    border-radius: 4px;
+    border-top-left-radius: 0px;
+    line-height: 1.5;
+    font-size: .9rem;
+    padding: 10px 15px;
+    box-sizing: border-box;
+}
+
+
+/* for top-left tringle in query */
+.query::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0px 20px 20px 0;
+    border-radius: 0;
+    border-color: transparent #ffffff transparent transparent;
+}
+
+.query .header{
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile_information{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.image_container{
+    width:42px !important;
+    height:42px !important;  
+}
+
+.header img{
+    width: 100%;
+    height: 100%; 
+}
+
+.header p{
+    margin: 0;
+}
+
+.image_container{
+    height: 45px;
+    width: 45px;
+}
+
+.username{
+    font-size: 12px;
+    color: rgb(174, 174, 174);
+}
+
+.timestamp{
+    font-size: .8rem;
+    margin-right: 10px;
+    color: rgb(181, 181, 181);
+}
+
+.content p{
+    margin:10px 0 ;
+    font-size: 14px;
+    color: rgb(47, 47, 47);
+}
+
+.query_footer{
+    border-top: 1px solid rgb(205, 205, 205);
+}
+
+.query_footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.like{
+    justify-content: space-between;
+}
+
+.like p{
+    margin: 0;
+}
+
+
+.comment p{
+    margin: 0;
+}
+
+.query_footer{
+    padding: 8px 0 4px;
+}
+
+
+.like-button, .comment-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: gray;
+  transition: color 0.3s ease;
+}
+
+.like-button:hover, .comment-button:hover {
+  color: black;
+}
+
+.liked{
+    color: black;  
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* for like and comment */
+span{
+    font-size: 15px;
+}
+
+
+
+
+
+
+
+/* ====================  media query ======================= */
+
+
+
+@media(max-width:1200px){
+    .querypost_box{
+        width: 50vw !important;
+    }
+}
+  
+
+@media(max-width:900px){
+  
+    .main_container{
+      width: 95vw;
+      height: calc(100vh - 105px);
+    }
+
+    .query{
+        width: 75vw;
+    }
+
+    .add_btn{
+        right: calc(3vw + 10px);
+    }
+
+    .querypost_box{
+        width: 60vw !important;
+    }
+}
+
+@media(max-width:738px){
+    .query{
+        width: 80vw;
+    }   
+
+    .querypost_box{
+        width: 75vw !important;
+    }
+
+}
+
+@media(max-width:600px){
+    .main_container{
+         height: calc(100vh - 100px);
+     }
+
+    .query{
+        width: 82vw;
+        margin-left: 13px;
+    }
+
+    /* to make small tringle */
+    .query::before {
+        left: -12px;
+        border-width: 0px 15px 15px 0;
+        border-color: transparent #ffffff transparent transparent;
+    }
+
+    .image_container{
+        width:38px !important;
+        height:38px !important;  
+    }
+
+    .profile_information{
+       gap: 12px;
+    }
+
+   .content p{
+    font-size:13px;
+   }
+
+   .name{
+    font-size: 14px;
+   }
+
+   .username{
+    font-size: 13px;
+   }
+
+    .querypost_box{
+        width: 80vw !important;
+    }
+
+    .icon {
+        width: 18px;
+        height: 18px;
+      }
+
+    span{
+        font-size: 14px;
+    }
+
+}
+  
+
+@media(max-width:500px){
+
+    .main_container{
+        height: calc(100vh - 90px);
+    }
+    
+    .query{
+        width: 87vw;
+    }
+
+    .querypost_box{
+        width: 90vw !important;
+    }
+}
