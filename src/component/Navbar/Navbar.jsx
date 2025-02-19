@@ -33,8 +33,8 @@ function Navbar() {
                 </div>
                 <div className={`links ${menuOpen && "show"}`}>
                     <p><NavLink to='./home' className={({ isActive }) => (isActive ? "active-link":'link')}> <p>Home</p></NavLink></p>
-                    <p><NavLink to='./leaderboard' className={({ isActive }) => (isActive ? "active-link":'link')}> <p> Leaderboard</p></NavLink></p>
-                    <p><NavLink to='./profile' className={({ isActive }) => (isActive ? "active-link":'link')}>
+                    <p><NavLink to='./login' className={({ isActive }) => (isActive ? "active-link":'link')}> <p> Leaderboard</p></NavLink></p>
+                    <p><NavLink to='./signup' className={({ isActive }) => (isActive ? "active-link":'link')}>
                     {
                          !menuOpen?
                          <p className='profile_pic'>
