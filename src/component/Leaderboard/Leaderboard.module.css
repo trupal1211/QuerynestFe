@@ -1,0 +1,85 @@
+.main_container.bg-white{
+    background-color: white;
+}
+
+/* Container */
+.container {
+    margin: 2rem auto;
+    padding: 20px;
+    border-radius: 12px;
+    background: #fff;
+    text-align: center;
+    position: relative;
+  }
+  
+  /* Title */
+  .title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  /* Button */
+  .button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: #DEC498;
+    color: white;
+    transition: background 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+    
+  /* Arrow Icons */
+  .arrowUp, .arrowDown {
+    margin-left: 10px;
+  }
+  
+  /* Dropdown List (Position Absolute to Overlay Content) */
+  .list {
+    width: 40vw;
+    position: absolute;
+    left: 0;
+    right: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    z-index: 999;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Dropdown Above or Below */
+  .listDown {
+    top: 60px; /* Below Button */
+  }
+  
+  /* .listUp {
+    bottom: 60px; /* Above Button 
+  } */
+  
+  /* Dropdown Item */
+  .item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .item:hover {
+    background: #eddbb5;
+  }
+  
+  /* Highlight Selected Option */
+  .selected {
+    background: #dbe1ff;
+    font-weight: bold;
+  }
+  

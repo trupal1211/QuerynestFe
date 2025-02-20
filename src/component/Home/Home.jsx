@@ -24,7 +24,6 @@ function Home() {
         <Query />
         <Query />
         <Query />
-
       </div>
 
 
@@ -42,36 +41,6 @@ function Home() {
               <p>select one tag that is approperiate to the query</p>
 
               <div className="tag-container">
-
-
-                {/* {tags.map((x)=>{
-                    <div onClick={() => setTag('General')}
-                    className={tag === 'General' ? 'blue' : ''}
-                  ># {x}</div>
-
-
-                  })}  */}
-
-
-
-
-                {/* 
-                   <div onClick={() => setTag('General')}
-                    className={tag === 'General' ? 'blue' : ''}
-                  ># General Query</div>
-
-                  <div onClick={(e) => { setTag('Technical') }}
-                    className={tag === 'Technical' ? 'blue' : ''}
-                  ># Technical</div>
-
-                  <div># Placement/Internship</div>
-                  <div># Compitativ Coding</div>
-                  <div># Hostel</div>
-                  <div># food</div>
-                  <div># further Study</div>
-                  <div># Soft skills</div>
-                  <div># Sports</div>
-                  <div># Curriculam</div>  */}
 
                 <div onClick={() => setTag(1)}
                   className={tag === 1 && 'blue'}
@@ -114,9 +83,6 @@ function Home() {
                   className={tag === 10 && 'blue'}
                 ># Curriculam</div>
 
-        
-
-
               </div>
 
               <div className="flex">
@@ -124,17 +90,7 @@ function Home() {
                 <div className="btn post">Post</div>
               </div>
 
-
-
-
-
-
             </form>
-
-
-
-
-
 
           </div>
         </div>

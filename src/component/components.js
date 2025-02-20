@@ -1,10 +1,12 @@
-import SignUp from "./Auth/SignUp";
+import SignUp from "./auth/SignUp";
 import LogIn from "./Auth/LogIn";
 import Navbar from "./Navbar/Navbar";
 import Home from './Home/Home'
 import Query from "./Home/Query";
-import Leaderbord from '../component/ContentPages/Leaderbord';
+import QueryDetails from "./Home/QueryDetails";
+import Leaderboard from './Leaderboard/Leaderboard';
+import UserRow from "./Leaderboard/UserRow";
 import Profile from '../component/ContentPages/profile'
 
 
-export {SignUp,LogIn,Navbar,Home,Leaderbord,Profile,Query}
+export {SignUp,LogIn,Navbar,Home,Leaderboard,Profile,Query,QueryDetails,UserRow}

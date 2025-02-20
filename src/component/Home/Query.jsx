@@ -2,9 +2,11 @@ import './home.css'
 import img from '../../assets/profile_photo.jpeg'
 import {ThumbsUp, Heart, MessageCircle } from "lucide-react";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Query(){
 
+  let navigate = useNavigate()
     const [liked, setLiked] = useState(false);
       const [likes, setLikes] = useState(10); // 
       const [comments, setComments] = useState(5); 
@@ -13,10 +15,14 @@ function Query(){
         setLiked(!liked);
         setLikes(liked ? likes - 1 : likes + 1);
       };
+
+      function showQueryDetails(){
+        navigate('/query-details')
+      }
     
     return(
         <>
-        <div className="query">
+        <div className="query" onClick={showQueryDetails}>
           <div className="header">
             <div className='profile_information'>
               <div className='image_container'>
