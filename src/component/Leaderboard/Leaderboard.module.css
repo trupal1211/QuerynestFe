@@ -4,11 +4,13 @@
 
 /* Container */
 .container {
-    margin: 2rem auto;
+    width: 85%;
+    margin:auto ;
     padding: 20px;
     border-radius: 12px;
     background: #fff;
     text-align: center;
+    box-sizing: border-box;
     position: relative;
   }
   
@@ -22,7 +24,8 @@
   /* Button */
   .button {
     padding: 10px 20px;
-    font-size: 1rem;
+    margin-left: 20px;
+    font-size: 16px;
     cursor: pointer;
     border: none;
     border-radius: 8px;
@@ -34,15 +37,12 @@
     align-items: center;
   }
     
-  /* Arrow Icons */
-  .arrowUp, .arrowDown {
-    margin-left: 10px;
-  }
   
   /* Dropdown List (Position Absolute to Overlay Content) */
   .list {
-    width: 40vw;
+    width: 260px;
     position: absolute;
+    box-sizing: border-box;
     left: 0;
     right: 0;
     list-style: none;
@@ -52,19 +52,16 @@
     border-radius: 8px;
     background: #fff;
     z-index: 999;
-    max-height: 200px;
+    max-height: 300px;
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   /* Dropdown Above or Below */
   .listDown {
-    top: 60px; /* Below Button */
+    top: 65px; /* Below Button */
+    left: 20px;
   }
-  
-  /* .listUp {
-    bottom: 60px; /* Above Button 
-  } */
   
   /* Dropdown Item */
   .item {
@@ -74,12 +71,12 @@
   }
   
   .item:hover {
-    background: #eddbb5;
+    background: #f5f5f5;
   }
   
   /* Highlight Selected Option */
   .selected {
-    background: #dbe1ff;
+    background: #eaeeff;
     font-weight: bold;
   }
   

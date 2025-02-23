@@ -6,7 +6,6 @@ import Query from "./Home/Query";
 import QueryDetails from "./Home/QueryDetails";
 import Leaderboard from './Leaderboard/Leaderboard';
 import UserRow from "./Leaderboard/UserRow";
-import Profile from '../component/ContentPages/profile'
-
+import Profile from './Profile/Profile'
 
 export {SignUp,LogIn,Navbar,Home,Leaderboard,Profile,Query,QueryDetails,UserRow}

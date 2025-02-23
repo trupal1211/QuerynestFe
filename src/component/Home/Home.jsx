@@ -57,7 +57,7 @@ function Home() {
 
                 <div onClick={() => setTag(4)}
                   className={tag === 4 && 'blue'}
-                ># Compitativ Coding</div>
+                ># Competitive Coding</div>
 
                 <div onClick={() => setTag(5)}
                   className={tag === 5 && 'blue'}

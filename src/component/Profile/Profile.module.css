@@ -1,0 +1,178 @@
+.main_container.bg-white{
+    background-color: #ffffff;
+}
+
+.page_container{
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+    line-height: 1.5;
+}   
+
+.profile_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding: 0;
+    /* background-color: gainsboro;  */
+}
+
+
+.img_container{
+    width: 150px;
+    height: 150px;
+    
+}
+
+.img_container img{
+    width: 100%;
+    height: 100%;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+p{
+    margin: 5px 0;
+}
+
+.name{
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.username{
+    color: rgb(178, 178, 178);
+    font-size: 22px;
+    margin-top: 0px;
+}
+
+.tags{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.tag{
+    font-size: .8rem;
+    background-color: rgba(39, 104, 255, 0.081);
+    padding: 3px 14px;
+    color: rgb(114, 114, 255);
+    border-radius: 120px;
+    margin: 0 12px 0 0;
+    font-size: 14px;
+    cursor: pointer;
+    /* display: inline; */
+}
+
+.follow_btn{
+    color: royalblue;
+    /* color: white; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 28px;
+    border: 2px solid royalblue;
+    border-radius: 42px;
+}
+
+
+
+
+/* ============================== */
+
+
+.bio_container{
+    display: flex;
+    margin-top: 20px;
+    gap: 2%;
+    /* background-color: gainsboro; */
+}
+
+.bio_container>div{
+    /* width:30%; */
+    padding: 12px;
+    box-sizing: border-box;
+    height: 65px;
+    border-radius: 8px;
+}
+
+div p{
+    margin: 0;
+}
+
+.bio{
+    width:42%;
+    background-color: #FBF5EE;
+    font-size: 14px;
+    padding: 0;
+}
+
+.linkedin{
+    width:32%;
+    background-color: #edf6ff;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.github{
+    width:32%;
+    background-color: #efefef;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+
+.logo_container{
+    width: 45px !important;
+    height: 45px !important;  
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+.logo_container img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.id_name{
+    font-size: 18px;   
+}
+
+.small{
+    font-size: 14px;
+}
+
+
+/* =================== */
+
+.card_container{
+    display: flex;
+    gap: 5%;
+    /* background-color: gainsboro; */
+    margin-top: 20px;
+}
+
+.card{
+    width: 20%;
+    padding: 16px;
+    text-align: center;
+    background-color: #FBF5EE;
+    border-radius: 8px;
+}
+
+.card_header{
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.card_body{
+    font-size: 30px;
+}

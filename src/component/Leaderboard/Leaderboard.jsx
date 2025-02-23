@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './Leaderboard.module.css'
 import {UserRow} from '../components'
+import tags from '../../assets/tags';
 
 function Leaderbord(){
-
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('General Query');
   const [dropDirection, setDropDirection] = useState('down'); // 'down' or 'up'
   const dropdownRef = useRef(null);
-
-  const options = ['React', 'Node.js', 'MongoDB', 'Express', 'JavaScript', 'CSS Modules', 'HTML', 'TypeScript'];
 
   // Handle option selection
   const handleSelect = (option) => {
@@ -21,6 +19,7 @@ function Leaderbord(){
   // Toggle dropdown and calculate direction (above or below)
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
+
     if (dropdownRef.current) {
       const { bottom, height } = dropdownRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
@@ -47,16 +46,13 @@ function Leaderbord(){
 
       <div className={styles.container} ref={dropdownRef}>
 
-      {/* Button to open dropdown */}
       <button className={styles.button} onClick={toggleDropdown}>
-        {selectedOption} 
-        <span className={isOpen ? styles.arrowUp : styles.arrowDown}>&#9662;</span>
+        Select Tag &#9662;
       </button>
 
-      {/* Dropdown options */}
       {isOpen && (
         <ul className={`${styles.list} ${dropDirection === 'up' ? styles.listUp : styles.listDown}`}>
-          {options.map((option, index) => (
+          {tags.map((option, index) => (
             <li
               key={index}
               className={`${styles.item} ${option === selectedOption ? styles.selected : ''}`}
@@ -68,6 +64,10 @@ function Leaderbord(){
         </ul>
       )}
     </div>
+
+    {/* {selectedOption} */}
+
+    
 
         <UserRow/>
         <UserRow/>

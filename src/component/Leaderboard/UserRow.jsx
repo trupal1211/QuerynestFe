@@ -12,7 +12,7 @@ function UserRow() {
                     </div>
                     <div>
                         <p className={styles.name}>Rahul Godhat</p>
-                        <p className={styles.rate}>4.5/5</p>
+                        <p className={styles.rate}>4.5 / 5</p>
                     </div>
                 </div>
                 <div className={styles.points}>
