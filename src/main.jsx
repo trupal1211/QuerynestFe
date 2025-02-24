@@ -7,8 +7,8 @@ import App from './App.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route  path="/" element={ <App /> }>
-      <Route path="home" element={ <Home/> } />
+    <Route  path="" element={ <App /> }>
+      <Route path="/" element={ <Home/> } />
       <Route path="query-details" element={ <QueryDetails/> } /> 
       <Route path="login" element={ <LogIn/>  } />     
       <Route path="signup" element={ <SignUp/> } />

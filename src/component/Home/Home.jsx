@@ -1,4 +1,3 @@
-import '../ContentPages/pages.css'
 import './home.css'
 import '@fontsource/kadwa'
 import '@fontsource/jua'

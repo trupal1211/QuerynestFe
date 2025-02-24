@@ -5,7 +5,7 @@
 .page_container{
     width: 90%;
     margin: auto;
-    margin-top: 30px;
+    margin: 30px auto;
     line-height: 1.5;
 }   
 
@@ -15,13 +15,13 @@
     align-items: center;
     margin: auto;
     padding: 0;
-    /* background-color: gainsboro;  */
+    background-color: gainsboro; 
 }
 
 
 .img_container{
-    width: 150px;
-    height: 150px;
+    width: 170px !important;
+    height: 170px !important;
     
 }
 
@@ -66,16 +66,16 @@ p{
     margin: 0 12px 0 0;
     font-size: 14px;
     cursor: pointer;
-    /* display: inline; */
 }
 
 .follow_btn{
-    color: royalblue;
-    /* color: white; */
+    /* color: royalblue; */
+    color: white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 18px;
     font-weight: bold;
     padding: 8px 28px;
+    background-color: royalblue;
     border: 2px solid royalblue;
     border-radius: 42px;
 }
@@ -89,12 +89,11 @@ p{
 .bio_container{
     display: flex;
     margin-top: 20px;
-    gap: 2%;
-    /* background-color: gainsboro; */
+    gap: 20px;
+    background-color: gainsboro;
 }
 
 .bio_container>div{
-    /* width:30%; */
     padding: 12px;
     box-sizing: border-box;
     height: 65px;
@@ -112,20 +111,37 @@ div p{
     padding: 0;
 }
 
+.wraper{
+    width: calc(58% - 20px) !important;
+    background-color: #ff4545;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 !important;
+}
+
 .linkedin{
-    width:32%;
+    width:50%;
     background-color: #edf6ff;
     display: flex;
     align-items: center;
     gap: 16px;
+    padding: 12px;
+    box-sizing: border-box;
+    height: 65px;
+    border-radius: 8px;
 }
 
 .github{
-    width:32%;
+    width:50%;
     background-color: #efefef;
     display: flex;
     align-items: center;
     gap: 16px;
+    padding: 12px;
+    box-sizing: border-box;
+    height: 65px;
+    border-radius: 8px;
 }
 
 
@@ -155,15 +171,23 @@ div p{
 
 .card_container{
     display: flex;
-    gap: 5%;
-    /* background-color: gainsboro; */
+    gap: 45px;
+    background-color: gainsboro;
     margin-top: 20px;
 }
 
+.subcard_container{
+    display: flex;
+    align-items: center;
+    gap: 45px;
+    width: 50%;
+}
+
 .card{
-    width: 20%;
+    width: 50%;
     padding: 16px;
     text-align: center;
+    box-sizing: border-box;
     background-color: #FBF5EE;
     border-radius: 8px;
 }
@@ -176,3 +200,282 @@ div p{
 .card_body{
     font-size: 30px;
 }
+
+.followers_card{
+    width: 22%;
+    height: 140px;
+}
+
+.followers_card>.card{
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    padding: 17px 10px;
+    background-color: #f6efff;
+}
+
+
+.archivements_container{
+    width: 74%;
+    padding:14px 20px;
+    box-sizing: border-box;
+    background-color: #ebffff;
+    height: 200px;
+    border-radius: 8px;
+}
+
+.archivements_container>.card_header{
+    margin-bottom: 5px;
+}
+
+.archivements{
+    display: flex;
+    gap: 16px;
+    padding: 10px;
+    overflow-x: auto;
+    white-space: nowrap !important;
+    background-color: #ff4545;
+}
+
+.archivement{
+  min-width: 150px;
+  height: 100px; 
+  padding: 12px 20px;
+  box-sizing: border-box;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.archivement_name{
+    font-size: 16px;  
+    margin:0 0 10px;
+}
+
+.archivement_date{
+    font-size: 12px;
+}
+
+
+.red{
+    background-color: #ffffff !important;
+    color: #ff4545;
+    border: 1.5px solid #ff4545;
+}
+
+
+
+
+
+
+
+@media(max-width:1000px){
+    .page_container{
+        width: 92%;
+    }
+
+    .small{
+        font-size: 12px;
+    }
+
+    .bio{
+        font-size: 13px;
+        padding: 4px 6px !important;
+    }
+}
+
+
+@media(max-width:830px){
+
+    .flex{
+        gap:25px;
+    }
+
+    .bio{
+        width: 36%;
+        padding: 4px 6px !important;
+    }
+    
+    .linkedin,.github{
+        width: 35%;
+        gap: 10px;
+        padding-right: 0px !important;
+    }
+
+    .id_name{
+        font-size: 16px;
+    }
+
+    .follow_btn{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 6px 24px;
+
+    }
+
+    .card_container{
+        gap: 3%;
+    }
+
+    .card{
+        width: 23%;
+    }
+    
+    .card_header{
+        font-size: 20px;
+    }
+
+    .card_body{
+        font-size: 28px;
+    }
+
+}
+
+
+@media(max-width:830px){
+    .page_container{
+        width: 95%;
+    }
+
+    .flex{
+        gap: 20px;
+    }
+
+    .name{
+        font-size:24px;
+    }
+
+    .username{
+        font-size:20px ;
+    }
+
+    .tag{
+        font-size: 12px;
+        margin-right: 8px;
+        margin-bottom: 6px;
+    }
+
+    .bio{
+        font-size: 12px;
+    }
+
+    .img_container{
+        width: 140px !important;
+        height: 140px !important; 
+    }
+
+    .logo_container{
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .github,.linkedin{
+        padding-right: 0px !important;
+        padding-left: 8px !important;
+    }
+
+}
+
+@media(max-width:720px){
+
+    .flex{
+        gap: 15px;
+    }
+
+    .name{
+        font-size: 22px;
+    }
+
+    .username{
+        font-size: 18px;
+    }
+
+    .card_header{
+        font-size: 19px;
+    }
+
+    .card_body{
+        font-size: 26px;
+    }
+
+    .card{
+        padding:16px 8px;
+    }
+}
+
+
+@media(max-width:660px){
+
+    .img_container{
+        width: 150px !important;
+        height: 150px !important; 
+    }
+
+    .name{
+        font-size: 20px;
+    }
+
+    .username{
+        font-size: 16px;
+    }
+
+    .tag{
+        font-size: 12px;
+    }
+
+    .profile_header{
+        display: block;
+    }
+
+    .follow_btn{
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .bio_container{
+        display: block;
+    }
+
+    .bio{
+        width: 100%;
+        box-sizing: border-box;
+        padding:12px !important ;
+        height: auto !important;
+        margin-top: 15px !important;
+    }
+
+    .wraper{
+        width: 100% !important;
+        margin-top: 15px;
+    }
+
+    .linkedin{
+        width: 50% !important;
+    }
+
+    .github{
+        width: 50% !important;
+    }
+   
+    
+
+
+    
+      
+      
+
+    
+
+
+
+}
+
+
+
+
+
