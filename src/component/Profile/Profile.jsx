@@ -2,7 +2,7 @@ import styles from './Profile.module.css';
 import profile_pic from '../../assets/profile_photo.jpeg'
 import linkedin_logo from '../../assets/images/linkedin.png'
 import github_logo from '../../assets/images/github.png'
-
+import {Archievement} from '../components'
 
 function Profile() {
   return (
@@ -33,96 +33,95 @@ function Profile() {
           </div>
 
           <div className={styles.bio_container}>
-            <div className={styles.bio}>Lorem ssss sssssc fv vff vfffffffffffff iunt molestiae! Commodi, dicta fugit.</div>
+            <div className={styles.bio}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta, delectus placeat. Repellat.</div>
 
             <div className={styles.wraper}>
-            <div className={styles.linkedin}>
-              <div className={styles.logo_container}>
-                <img src={linkedin_logo} alt="" />
+              <div className={styles.linkedin}>
+                <div className={styles.logo_container}>
+                  <img src={linkedin_logo} alt="" />
+                </div>
+                <div>
+                  <p className={styles.id_name}>Trupal godhat</p>
+                  <p className={styles.small}>509 Connections</p>
+                </div>
+
               </div>
-              <div>
-              <p className={styles.id_name}>Trupal godhat</p>
-              <p className={styles.small}>509 Connections</p>
+              <div className={styles.github}>
+                <div className={styles.logo_container}>
+                  <img src={github_logo} alt="" />
+                </div>
+                <div>
+                  <p className={styles.id_name}>Trupal godhat</p>
+                  <p className={styles.small}>19 public repositories</p>
+                </div>
               </div>
+
 
             </div>
-            <div className={styles.github}>
-              <div className={styles.logo_container}>
-                <img src={github_logo} alt="" />
-              </div>
-              <div>
-              <p className={styles.id_name}>Trupal godhat</p>
-              <p className={styles.small}>19 public repositories</p>
-              </div>
-            </div>
 
 
-            </div>
-
-            
 
           </div>
 
           <div className={styles.card_container}>
-            <div className={styles.card}>
-              <p className={styles.card_header}>Questions</p>
-              <p className={styles.card_body}>7</p>
+            <div className={styles.subcard_container}>
+              <div className={styles.card}>
+                <p className={styles.card_header}>Questions</p>
+                <p className={styles.card_body}>7</p>
+              </div>
+
+              <div className={styles.card}>
+                <p className={styles.card_header}>Answers</p>
+                <p className={styles.card_body}>21</p>
+              </div>
+            </div>
+            <div className={styles.subcard_container}>
+              <div className={styles.card}>
+                <p className={styles.card_header}>Avg. Rating</p>
+                <p className={styles.card_body}>4.48</p>
+              </div>
+              <div className={styles.card}>
+                <p className={styles.card_header}>Total Points</p>
+                <p className={styles.card_body}>158.05</p>
+              </div>
             </div>
 
-            <div className={styles.card}>
-              <p className={styles.card_header}>Answers</p>
-              <p className={styles.card_body}>21</p>
-            </div>
 
-            <div className={styles.card}>
-              <p className={styles.card_header}>Avg. Rating</p>
-              <p className={styles.card_body}>4.48</p>
-            </div>
-            <div className={styles.card}>
-              <p className={styles.card_header}>Total Points</p>
-              <p className={styles.card_body}>158.05</p>
-            </div>
-           
-            
+
+
+
           </div>
 
           <div className={styles.card_container}>
 
-          <div className={styles.archivements_container}>
+            <div className={styles.followerscard_container}>
+              <div className={styles.card}>
+                <div className={styles.title}>followers</div>
+                <div className={styles.number}>34</div>
+              </div>
+              <div className={styles.card}>
+                <div className={styles.title}>following</div>
+                <div className={styles.number}>34</div>
+              </div>
+            </div>
+            <div className={styles.archivements_container}>
               <div className={styles.card_header}>Archivments</div>
               <div className={styles.archivements}>
-               
-               
-                
-                <div className={styles.archivement}>
-                  <div>
-                  <p className={styles.archivement_name}>Top 10 efdskjn in C++</p>  
-                  <p className={styles.archivement_date}>june 24</p>
-               
-
-                  </div>
-                   </div>                
+                <Archievement/>
+                <Archievement/>
+                <Archievement/>
+                <Archievement/>
               </div>
             </div>
-
-            <div className={styles.followers_card}>
-              <div className={styles.card}>
-              3 followers
-              </div>
-              <div className={styles.card}>
-              23 followings
-              </div>
-              <div className={`${styles.card} ${styles.red}`}>
-              Log Out
-              </div>
-            </div>
-            
           </div>
 
-          
+          <div className={styles.btn_container}>
+          <div className={styles.logout_btn}>log out</div>         
+          </div>
+
+      
         </div>
-
-
+        
       </div>
     </>
   )
