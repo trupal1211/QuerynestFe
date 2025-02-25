@@ -67,7 +67,6 @@ p{
     color: rgb(114, 114, 255);
     border-radius: 120px;
     margin-right:12px;
-    cursor: pointer;
 }
 
 .follow_btn{
@@ -80,6 +79,7 @@ p{
     background-color: royalblue;
     border: 2px solid royalblue;
     border-radius: 42px;
+    cursor: pointer;
 }
 
 .edit{
@@ -145,6 +145,7 @@ div p{
     padding-right: 0px;
     height: 65px;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .github{
@@ -158,6 +159,7 @@ div p{
     box-sizing: border-box;
     height: 65px;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .logo_container{
@@ -204,6 +206,7 @@ div p{
     box-sizing: border-box;
     background-color: #FBF5EE;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .card_header{
@@ -234,7 +237,8 @@ div p{
     padding:10px 20px;
     padding-bottom: 0;
     box-sizing: border-box;
-    background-color: #ebffff;
+    /* background-color: #ebffff; */
+    border: .3px solid rgba(128, 128, 128, 0.242);
     height: 200px;
     border-radius: 8px;
 }
@@ -252,6 +256,7 @@ div p{
     border-radius: 8px;
     padding:10px;
     background-color: #f6efff;
+    cursor: pointer;
 }
 
 .title{
@@ -284,9 +289,9 @@ div p{
   height: 135px; 
   padding: 12px 20px !important;
   box-sizing: border-box;
-  background-color: #f0f0f0;
+  background-color: #ebffff;
+  background-color: #dbfff3;
   border-radius: 8px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   display: flex;
   align-items: center;
@@ -318,6 +323,7 @@ div p{
     border: 1.5px solid #ff4545;
     color: #ff4545ed;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 
@@ -492,8 +498,8 @@ div p{
     }    
 
     .img_container{
-        width: 150px !important;
-        height: 150px !important; 
+        width: 130px !important;
+        height: 130px !important; 
     }
 
     .width_auto{
@@ -652,6 +658,30 @@ div p{
 }
 
 
+@media(max-width:410px){
 
+    .id_name{
+        font-size: 14px;
+    }
+
+    .small{
+        font-size: 11px;
+    }
+
+    .card{
+        padding-left: 2px !important;
+        padding-right: 2px !important;
+
+    }
+
+    .card_header{
+        font-size: 13px !important;
+    }
+
+    .card_body{
+        font-size: 21px;
+    }
+
+}
 
 

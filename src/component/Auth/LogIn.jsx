@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import './auth.css'
+import styles from './Auth.module.css'
 import '@fontsource/kadwa'
 import '@fontsource/jua'
 
@@ -17,33 +17,31 @@ function LogIn(){
  
   return(
     <>
-       <div className="signup_page">
-        <div className="left_container">
-          <div className="welcome_content">
-            <p className='welcome'>Welcome to</p>
-            <p className='querynest'>QueryNest</p>
-            <p className='slogan'>- Ask,Answer,Grow</p>
+       <div className={styles.main_page}>
+        <div className={styles.name_container}>
+          <div className={styles.welcome_content}>
+            <p className={styles.welcome}>Welcome to</p>
+            <p className={styles.querynest}>QueryNest</p>
+            <p className={styles.slogan}>- Ask,Answer,Grow</p>
           </div>
         </div>
-        <div className="right_container">
-          <form className="signup_form">
+          <form className={styles.form}>
             <h2>Log In to Your Account</h2>
-            <div class="form-group">
+            <div class={styles.form_group}>
               <input type="email" id="email" onChange={(e)=>{setName(e.target.value)}} placeholder=" " required />
               <label for="email">Email</label>             
             </div>
-            <div class="form-group">
+            <div class={styles.form_group}>
               <input  type={showPassword ? "text" : "password"} id="password" placeholder=" " required />
               <label for="password">Password</label>
             </div>
            
-            <button className='signup_btn' onClick={submitHandler}>Log In</button>
+            <button className={styles.btn} onClick={submitHandler}>Log In</button>
 
             <p>Don't have an account ? <b onClick={()=>{navigate('/signup')}}  style={{cursor:'pointer',color:'#DEC498'}}>Sign Up</b> here</p>
 
           </form>
         </div>
-      </div> 
     </>
   )
 }

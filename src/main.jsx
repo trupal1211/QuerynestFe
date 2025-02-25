@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, createRoutesFromElements, Route , RouterProvider } from 'react-router-dom'
-import { SignUp,LogIn,Home,Leaderboard,Profile,QueryDetails } from './component/components.js'
+import { SignUp,LogIn,Home,Leaderboard,Profile,QueryDetails,EditProfile } from './component/components.js'
 import './index.css'
 import App from './App.jsx'
 
@@ -13,7 +13,8 @@ const router = createBrowserRouter(
       <Route path="login" element={ <LogIn/>  } />     
       <Route path="signup" element={ <SignUp/> } />
       <Route path="leaderboard" element={ <Leaderboard/> } /> 
-      <Route path="profile" element={ <Profile/> } /> 
+      <Route path="profile" element={ <Profile/> } />
+      <Route path='form' element={<EditProfile/>}/> 
       <Route path="*" element={ <h1>page not found</h1>  } />
     </Route>
   )
