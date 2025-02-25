@@ -17,7 +17,7 @@ function SignUp(){
   return(
     <>
        <div className={styles.main_page}>
-        <div className={styles.name_container}>
+        <div className={`${styles.name_container} ${styles.signup}`}>
           <div className={styles.welcome_content}>
             <p className={styles.welcome}>Welcome to</p>
             <p className={styles.querynest}>QueryNest</p>

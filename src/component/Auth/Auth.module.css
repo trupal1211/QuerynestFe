@@ -100,6 +100,10 @@
     border-color:  #deb70c;
   }
 
+  .form p{
+    margin-bottom: 20px;
+  }
+
 
 .btn{
     width: 85%;
@@ -225,9 +229,13 @@
     }
 
     .name_container{
-        margin: 80px auto 70px!important;
+        margin: 70px auto 80px;
     }
-
+    
+    .name_container.signup{
+        margin: 70px auto 40px;
+    }
+    
     .form{
         width: 90% !important;
         margin:10px auto 20px;
@@ -257,9 +265,6 @@
         font-size: 16px;
     }
 
-
-
-    
 
 
 }
