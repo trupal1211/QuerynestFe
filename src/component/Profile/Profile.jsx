@@ -40,7 +40,7 @@ function Profile() {
                 <div className={styles.logo_container}>
                   <img src={linkedin_logo} alt="" />
                 </div>
-                <div>
+                <div className={styles.details_container}>
                   <p className={styles.id_name}>Trupal godhat</p>
                   <p className={styles.small}>509 Connections</p>
                 </div>
@@ -50,7 +50,7 @@ function Profile() {
                 <div className={styles.logo_container}>
                   <img src={github_logo} alt="" />
                 </div>
-                <div>
+                <div  className={styles.details_container}>
                   <p className={styles.id_name}>Trupal godhat</p>
                   <p className={styles.small}>19 public repositories</p>
                 </div>
@@ -64,8 +64,7 @@ function Profile() {
           </div>
 
           <div className={styles.card_container}>
-            <div className={styles.subcard_container}>
-              <div className={styles.card}>
+         <div className={styles.card}>
                 <p className={styles.card_header}>Questions</p>
                 <p className={styles.card_body}>7</p>
               </div>
@@ -74,8 +73,7 @@ function Profile() {
                 <p className={styles.card_header}>Answers</p>
                 <p className={styles.card_body}>21</p>
               </div>
-            </div>
-            <div className={styles.subcard_container}>
+            
               <div className={styles.card}>
                 <p className={styles.card_header}>Avg. Rating</p>
                 <p className={styles.card_body}>4.48</p>
@@ -84,24 +82,24 @@ function Profile() {
                 <p className={styles.card_header}>Total Points</p>
                 <p className={styles.card_body}>158.05</p>
               </div>
-            </div>
-
-
-
-
-
           </div>
 
-          <div className={styles.card_container}>
+          <div className={styles.last_card_container}>
 
             <div className={styles.followerscard_container}>
               <div className={styles.card}>
                 <div className={styles.title}>followers</div>
                 <div className={styles.number}>34</div>
+                <div className={styles.oneline}>
+                <span className={styles.oneline_number}>34 </span> 
+                followers</div>
               </div>
               <div className={styles.card}>
                 <div className={styles.title}>following</div>
                 <div className={styles.number}>34</div>
+                <div className={styles.oneline}>
+                  <span className={styles.oneline_number}>34 </span> 
+                  following</div>
               </div>
             </div>
             <div className={styles.archivements_container}>
@@ -114,7 +112,6 @@ function Profile() {
               </div>
             </div>
           </div>
-
           <div className={styles.btn_container}>
           <div className={styles.logout_btn}>log out</div>         
           </div>
