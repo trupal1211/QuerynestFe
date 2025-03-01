@@ -42,44 +42,44 @@ function Home() {
               <div className="tag-container">
 
                 <div onClick={() => setTag(1)}
-                  className={tag === 1 && 'blue'}
+                  className={tag === 1 && 'selected'}
                 ># General Query</div>
 
 
                 <div onClick={() => setTag(2)}
-                  className={tag === 2 && 'blue'}
+                  className={tag === 2 && 'selected'}
                 ># Technical</div>
 
                 <div onClick={() => setTag(3)}
-                  className={tag === 3 && 'blue'}
+                  className={tag === 3 && 'selected'}
                 ># Placement/Internship</div>
 
                 <div onClick={() => setTag(4)}
-                  className={tag === 4 && 'blue'}
+                  className={tag === 4 && 'selected'}
                 ># Competitive Coding</div>
 
                 <div onClick={() => setTag(5)}
-                  className={tag === 5 && 'blue'}
+                  className={tag === 5 && 'selected'}
                 ># Hostel</div>
 
                 <div onClick={() => setTag(6)}
-                  className={tag === 6 && 'blue'}
+                  className={tag === 6 && 'selected'}
                 ># food</div>
 
                 <div onClick={() => setTag(7)}
-                  className={tag === 7 && 'blue'}
+                  className={tag === 7 && 'selected'}
                 ># further Study</div>
 
                 <div onClick={() => setTag(8)}
-                  className={tag === 8 && 'blue'}
+                  className={tag === 8 && 'selected'}
                 ># Soft skills</div>
 
                 <div onClick={() => setTag(9)}
-                  className={tag === 9 && 'blue'}
+                  className={tag === 9 && 'selected'}
                 ># Sports</div>
 
                 <div onClick={() => setTag(10)}
-                  className={tag === 10 && 'blue'}
+                  className={tag === 10 && 'selected'}
                 ># Curriculam</div>
 
               </div>

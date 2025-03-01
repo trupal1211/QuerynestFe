@@ -147,18 +147,21 @@ html{
 
 .tag-container div{
     font-size: .8rem;
-    background-color: rgb(238, 243, 255);
     padding: 3px 14px;
-    color: rgb(114, 114, 255);
+    /* background-color: rgb(238, 243, 255);
+    color: rgb(114, 114, 255); */
     border-radius: 120px;
     margin: 0;
     font-size: 12px;
     cursor: pointer;
+    color: #68428f;
+  background-color:rgb(245, 236, 255);
 }
 
-.blue{
+.selected{
     color: white !important;
-    background-color: rgba(9, 9, 255, 0.597) !important;
+    /* background-color: rgba(9, 9, 255, 0.597) !important; */
+    background-color: rgb(147, 96, 198) !important;
 }
 
 .btn{
@@ -284,6 +287,11 @@ html{
     justify-content: space-between;
     align-items: center;
     font-size: 14px;
+}
+
+.like_img{
+    width: 40px;
+    height: 40px;
 }
 
 .like{
