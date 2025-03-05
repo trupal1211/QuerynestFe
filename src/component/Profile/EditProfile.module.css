@@ -1,6 +1,7 @@
 .form {
   width: 90%;
   padding: 12px;
+  padding-bottom: 20px;
   box-sizing: border-box;
   margin: auto;
 }
@@ -198,10 +199,8 @@ label {
   background-color: rgb(147, 96, 198);
 }
 
-
-.btn_container {
-  display: flex;
-  justify-content: end;
+.form_group.btn_container{
+  height: 80px;
 }
 
 .btn {
@@ -229,6 +228,10 @@ label {
 
   .main_flex{
     padding: 0 !important;
+  }
+
+  .flex{
+    gap: 20px;
   }
 
   .main_flex>div {
@@ -260,6 +263,14 @@ label {
     display: block;
   }
 
+  .flex{
+    gap: 10px;
+  }
+
+  .tag_header{
+    font-size: 12px;
+  }
+
   .form_group{
     width: 100% !important;
   }
@@ -272,5 +283,9 @@ label {
   .main_flex>div{
     width: 100% !important;
   }
+
+.form_group.btn_container{
+  height: 90px;
+}
 }
 

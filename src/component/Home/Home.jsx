@@ -25,8 +25,6 @@ function Home() {
         <Query />
       </div>
 
-
-
       {showBox && (
         <div className="overlay active">
           <div className="querypost_box">

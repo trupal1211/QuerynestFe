@@ -489,6 +489,10 @@ div p{
     .card{
         padding:16px 8px;
     }
+
+    .archivements{
+        min-height: 130px;
+    }
 }
 
 

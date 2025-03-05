@@ -6,6 +6,7 @@ import Navbar from "./Navbar/Navbar";
 import Home from './Home/Home';
 import Query from "./Home/Query";
 import QueryDetails from "./Home/QueryDetails";
+import Answer from "./Home/Answer";
 
 import Leaderboard from './Leaderboard/Leaderboard';
 import UserRow from "./Leaderboard/UserRow";
@@ -16,4 +17,4 @@ import Archievement from "./Profile/Archievement";
 import EditProfile from "./Profile/EditProfile";
 
 
-export {SignUp,LogIn,Navbar,Home,Leaderboard,Profile,Query,QueryDetails,UserRow,Archievement,EditProfile}
+export {SignUp,LogIn,Navbar,Home,Leaderboard,Profile,Query,QueryDetails,UserRow,Archievement,EditProfile,Answer}

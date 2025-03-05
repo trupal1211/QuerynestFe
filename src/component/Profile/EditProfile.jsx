@@ -137,13 +137,11 @@ function EditProfile() {
                             
 
                         </div>
-
                     </div>  
-
                     <div className={styles.main_flex}>
                         <div></div>
                         <div>
-                        <div className={styles.form_group}>
+                        <div className={`${styles.form_group} ${styles.btn_container}`}>
                         <div className={styles.btn} onClick={()=>navigate('/login')}>Save</div>         
 
                         </div>

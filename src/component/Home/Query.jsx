@@ -3,7 +3,8 @@ import img from '../../assets/profile_photo.jpeg'
 import {ThumbsUp, Heart, MessageCircle } from "lucide-react";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import like_img from '../../assets/images/like.jpeg'
+import like_img from '../../assets/images/like.png'
+import nonLike_img from '../../assets/Images/nonLike.png'
 
 function Query(){
 
@@ -46,13 +47,15 @@ function Query(){
           <div className="query_footer">
             <div className='like flex'>
             <button className={`like-button ${liked ? "liked" : ""}`} onClick={handleLike}>
-            {liked? <img className='like_img' src={like_img}/>
-              :    <ThumbsUp fill={liked ? "blue" : "none"} className="icon" />}
-        <span>{likes} likes</span>
+              <div className="like_img">
+              {liked? <img src={like_img}/>
+              : <img src={nonLike_img}/>   }
+              </div>
+                <span>{likes} likes</span>
       </button>
 
             </div>
-              <div className='comment'>
+              <div className='comment' onClick={()=>{navigate('./query-details')}}>
             <button className="comment-button">
         <MessageCircle className="icon" />
         <span>{comments} answers</span>
