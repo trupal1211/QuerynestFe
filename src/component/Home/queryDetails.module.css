@@ -3,6 +3,23 @@
     cursor: pointer;
 }
 
+.tagContainer{
+    width: auto !important;
+    margin-bottom: 10px;
+    margin-left: 18px;
+}
+
+.tag{
+    font-size: 14px;
+    padding: 4px 18px 3px 14px !important;
+    display: inline;
+    font-weight: normal;
+    border-radius: 120px;
+    font-size: 14px;
+    color: #68428f;
+    background-color: rgb(245, 236, 255);
+  }
+
 .query {
     width: 70%;
     margin-left: 16px;
@@ -127,9 +144,14 @@
     transition: color 0.3s ease;
 }
 
+.starContainer{
+    width: 50px;
+}
+
 .star{
     width: 28px;
     height: 20px;
+    margin-right: 6px;
     display: flex;
     gap: 4px;
 }
@@ -204,6 +226,10 @@ span {
     
     .backbtn{
         margin: 4px 10px !important;
+    }
+
+    .tagContainer{
+        margin-left: 8px;
     }
 
     .query,.answer{

@@ -76,7 +76,7 @@
     font-size: 16px;
   }
 
-  label {
+  .form_group label {
     position: absolute;
     top: 50%;
     left: 10px;

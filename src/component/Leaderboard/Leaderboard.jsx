@@ -42,7 +42,7 @@ function Leaderbord() {
       <div className='main_container bg-white'>
         <div className={styles.container} ref={dropdownRef}>
           <div className={styles.title}> 
-            <p>Leaderboard</p><p className={`${styles.tag} ${styles.max_tag} `}># {selectedOption} </p>
+            <p>Leaderboard</p><p className={`${styles.tag} ${styles.max_tag} `}># {selectedOption} </p><p className={styles.ltime}>jun 2024</p>
           </div>
 
           <button className={styles.button} onClick={toggleDropdown}>
@@ -66,6 +66,7 @@ function Leaderbord() {
 
         <div className={styles.tag_container}>
            <p className={styles.tag}># {selectedOption} </p>
+           <p className={styles.mtime}>jun 2024</p>
         </div>
 
         {/* {selectedOption} */}

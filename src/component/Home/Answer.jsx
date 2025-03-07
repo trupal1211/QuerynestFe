@@ -55,15 +55,13 @@ function Answer() {
                             <span>{likes} likes</span>
                         </button>
                     </div>
+                    <div className={styles.starContainer}>
                     <div className={styles.star}>
                        <p style={{marginTop:'1px'}}>4.5</p> <img src={star} />
                     </div>
-                    <div className={styles.comment}>
-                        <button className={styles.comment_button}>
-                            <MessageCircle className={styles.icon} />
-                            <span>{comments} answers</span>
-                        </button>
                     </div>
+                   
+                    
                 </div>
             </div>
         </>

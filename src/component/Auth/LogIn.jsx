@@ -12,7 +12,7 @@ function LogIn(){
 
   function submitHandler(){
     console.log(name)
-    navigate('/home')
+    navigate('/')
   }
  
   return(

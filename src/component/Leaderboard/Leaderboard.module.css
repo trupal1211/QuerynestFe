@@ -24,6 +24,19 @@
   padding: 10px 20px;
 }
 
+.ltime{
+  font-size: 16px;
+  font-weight: normal;
+  color: #919191;
+}
+
+.mtime{
+  display: none;
+  font-size: 16px;
+  font-weight: normal;
+  color: #919191;
+}
+
 /* Title */
 .title {
   font-size: 24px;
@@ -122,6 +135,15 @@
     font-size: 20px;
   }
 
+  .ltime{
+    display: none;
+
+  }
+
+  .mtime{
+    display: block;
+  }
+
   .list{
     font-size: 14px;
     width: 200px;
@@ -136,7 +158,8 @@
   }
 
   .tag_container{
-    display: block;
+    display: flex !important;
+    gap: 12px;
     width: 90%;
     padding-top: 0;
     padding-left: 14px;

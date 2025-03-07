@@ -26,7 +26,12 @@ function QueryDetails() {
     return (
         <>
             <div className="main_container bg-white">
-                <p onClick={() => { navigate('/home') }} className={styles.backbtn}> ⇦ back</p>
+                <p onClick={() => { navigate('/') }} className={styles.backbtn}> ⇦ back</p>
+
+                <div className={styles.tagContainer}>
+                <div className={styles.tag}># Placement</div>
+                </div>
+
 
                 <div className={styles.query}>
                     <div className={styles.header}>
@@ -71,20 +76,16 @@ function QueryDetails() {
 
                 <Answer></Answer>
                 <Answer></Answer>
-
-                <Answer></Answer>
-
-
-
                 <Answer></Answer>
                 <Answer></Answer>
-
+                <Answer></Answer>
+                <Answer></Answer>
+                <Answer></Answer>
                 <Answer></Answer>
 
-                <Answer></Answer>
+                <div className={styles.answerpost_box}>
 
-                <Answer></Answer>
-
+                </div>
 
 
             </div>
