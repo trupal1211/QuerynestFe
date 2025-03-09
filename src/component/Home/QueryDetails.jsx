@@ -1,11 +1,11 @@
 import styles from './QueryDetails.module.css'
 import { useNavigate } from 'react-router-dom'
-import { ThumbsUp, Heart, MessageCircle } from "lucide-react";
-import profileImg from "../../assets/profile_photo.jpeg"
+import { MessageCircle } from "lucide-react";
+import profileImg from "../../assets/Images/profile_photo.jpeg"
 import like_img from '../../assets/Images/like.png'
 import nonLike_img from '../../assets/Images/nonLike.png'
 import { useState } from 'react'
-import {Answer} from '../../component/components';
+import { Answer } from '../../component/components';
 
 function QueryDetails() {
 
@@ -13,6 +13,7 @@ function QueryDetails() {
     const [liked, setLiked] = useState(false);
     const [likes, setLikes] = useState(10); // 
     const [comments, setComments] = useState(5);
+    const [answer, setAnswer] = useState("")
 
     const handleLike = () => {
         setLiked(!liked);
@@ -25,13 +26,14 @@ function QueryDetails() {
 
     return (
         <>
-            <div className="main_container bg-white">
-                <p onClick={() => { navigate('/') }} className={styles.backbtn}> ⇦ back</p>
+            <div className="main_container bg-white p-bottom">
+                <div className={styles.page_header}>
+                    <p onClick={() => { navigate('/') }} className={styles.backbtn}> ⇦ back</p>
 
-                <div className={styles.tagContainer}>
-                <div className={styles.tag}># Placement</div>
+                    <div className={styles.tagContainer}>
+                        <div className={styles.tag}># Teachnical</div>
+                    </div>
                 </div>
-
 
                 <div className={styles.query}>
                     <div className={styles.header}>
@@ -54,11 +56,11 @@ function QueryDetails() {
                     </div>
 
                     <div className={styles.footer}>
-                         <div className={styles.like}>
+                        <div className={styles.like}>
                             <button className={`${styles.like_button} ${liked ? styles.liked : ""}`} onClick={handleLike}>
                                 <div className={styles.like_img}>
                                     {liked ? <img src={like_img} />
-                                        :<img src={nonLike_img} /> }
+                                        : <img src={nonLike_img} />}
                                 </div>
                                 <span>{likes} likes</span>
                             </button>
@@ -84,9 +86,12 @@ function QueryDetails() {
                 <Answer></Answer>
 
                 <div className={styles.answerpost_box}>
-
+                    <div class={styles.form_group} style={{ position: 'relative' }}>
+                        <textarea id="ans" onChange={(e) => setAnswer(e.target.value)} placeholder=" " required />
+                        <label className={styles.textarea_label} for="ans">Answer</label>
+                    </div>
+                    <div className={styles.post_btn}>Post</div>
                 </div>
-
 
             </div>
         </>

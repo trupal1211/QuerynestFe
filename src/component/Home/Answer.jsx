@@ -1,7 +1,6 @@
 import styles from  './QueryDetails.module.css'
 import { useNavigate } from 'react-router-dom'
-import { ThumbsUp, Heart, MessageCircle } from "lucide-react";
-import profileImg from "../../assets/profile_photo.jpeg"
+import profileImg from "../../assets/Images/profile_photo.jpeg"
 import star from '../../assets/Images/star.png'
 import like_img from '../../assets/Images/like.png'
 import nonLike_img from '../../assets/Images/nonLike.png'
