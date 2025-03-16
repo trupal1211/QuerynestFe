@@ -4,7 +4,7 @@ import styles from './Auth.module.css'
 import '@fontsource/kadwa'
 import '@fontsource/jua'
 
-function VerifyOtp() {
+function VerifyPasscode() {
 
     const navigate = useNavigate()
     const [otp, setOtp] = useState(new Array(6).fill(""));
@@ -12,6 +12,7 @@ function VerifyOtp() {
     const [loaderStatus, setLoaderStatus] = useState(false);
     const [error, setError] = useState(""); 
     const [success, setSuccess] = useState(""); 
+
 
     function showError(message) {
         setError(message);
@@ -37,6 +38,7 @@ function VerifyOtp() {
         if (value && index < 5) {
             document.getElementById(`otp-${index + 1}`).focus();
         }
+
     };
 
     const handleKeyDown = (index, e) => {
@@ -45,75 +47,53 @@ function VerifyOtp() {
         }
     };
 
+    
+
 
     async function submitHandler(e) {
 
-        e.preventDefault();
+        e.preventDefault()
+        
         let otpString = otp.join("")
 
-        const otpData = {
-            clgemail: localStorage.getItem("clgEmail"),
-            otp: otpString
+        const verifyPasscodeData = {
+            email: localStorage.getItem("Passcode_Email"),
+            passcode: otpString
         };
 
-        console.log(otpData)
+        console.log(verifyPasscodeData)
 
         setLoaderStatus(true)
 
         try {
-            const response = await fetch("https://querynest-4tdw.onrender.com/api/User/verify-otp", {
+            const response = await fetch("https://querynest-4tdw.onrender.com/api/User/verifypasscode", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(otpData),
+                body: JSON.stringify(verifyPasscodeData),
             });
+
 
             const result = await response.json();
             console.log(result)
 
             setLoaderStatus(false)
-
-            if(response.ok) {
-                showSuccess("Registration successful!");
-                setTimeout(() => navigate("/login"), 2000);
-            }
-            else{
-                showError(result.message || "Verification failed!");
-            }
-        } catch (error) {
-            showError(error.message || "Something went wrong. Please try again.");
-            setLoaderStatus(false)
-        }
-    }
-
-    async function resendOtpHander() {
-
-        const resendOtpData = {
-            clgemail: localStorage.getItem("clgEmail")
-        };
-
-
-        try {
-            const response = await fetch("https://querynest-1-g4vt.onrender.com/api/User/resend-otp", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(resendOtpData),
-            });
-
-            const result = await response.json();
-            console.log(result)
 
             if (response.ok) {
-                showSuccess("OTP resent successfully");
+                showSuccess("passcode verified");
+                setTimeout(() => navigate("/reset-password"), 2000)
             } else {
-                showError(result.message || "Failed to Resend OTP!");
+                showError(result.message);
             }
         } catch (error) {
             showError(error.message || "Something went wrong. Please try again.");
+            setLoaderStatus(false)
         }
     }
+
 
     return (
         <>
+
             <div className={styles.main_page}>
                 <div className={styles.name_container}>
                     <div className={styles.welcome_content}>
@@ -123,7 +103,8 @@ function VerifyOtp() {
                     </div>
                 </div>
                 <form className={styles.form} onSubmit={submitHandler}>
-                    <h2>Enter OTP</h2>
+                    <h2>Enter Passcode</h2>
+
                     <p style={{ lineHeight: '1.5', color: 'gray', marginLeft: '10px', marginRight: '10px' }}>We have sent a 6-digit OTP to your registered E-mail. Please enter it below for verification.</p>
 
                     <div className={styles.otpContainer}>
@@ -141,13 +122,13 @@ function VerifyOtp() {
                         ))}
                     </div>
 
-                    <button className={`${styles.btn} ${styles.submitBtn}`} type={loaderStatus ? "button" : "submit"} disabled={loaderStatus}>
-                        {loaderStatus ? <div className={styles.loader} ></div> : 'Submit'}
+                    <button className={`${styles.btn} ${styles.submitBtn}`} 
+                        type={loaderStatus ? "button" : "submit"} disabled={loaderStatus}>
+                        {!loaderStatus ? 'Submit' : <div className={styles.loader}></div>}
                     </button>
 
-                    <p className={styles.rednotes}>OTP will expires in 5 minutes</p>
+                    <p style={{color:'#ff4545',marginBottom:'20px'}}>Passcode will expires in 20 minutes</p>
 
-                    <p>Didn't get OTP ? <b onClick={resendOtpHander} style={{ marginBottom: '30px' }} className={styles.navigateLink}>resend OTP</b></p>
                 </form>
             </div>
 
@@ -160,4 +141,4 @@ function VerifyOtp() {
     )
 }
 
-export default VerifyOtp
+export default VerifyPasscode

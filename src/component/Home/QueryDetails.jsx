@@ -1,97 +1,136 @@
 import styles from './QueryDetails.module.css'
-import { useNavigate } from 'react-router-dom'
-import { MessageCircle } from "lucide-react";
-import profileImg from "../../assets/Images/profile_photo.jpeg"
-import like_img from '../../assets/Images/like.png'
-import nonLike_img from '../../assets/Images/nonLike.png'
-import { useState } from 'react'
-import { Answer } from '../../component/components';
+import home_styles from '../Home/Home.module.css'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { Answer, Query } from '../../component/components';
+import Cookies from 'js-cookie';
 
 function QueryDetails() {
 
     let navigate = useNavigate()
-    const [liked, setLiked] = useState(false);
-    const [likes, setLikes] = useState(10); // 
+    const { query_id } = useParams();
     const [comments, setComments] = useState(5);
     const [answer, setAnswer] = useState("")
+    const [query, setQuery] = useState({})
 
     const handleLike = () => {
         setLiked(!liked);
         setLikes(liked ? likes - 1 : likes + 1);
     };
 
-    function showQueryDetails() {
-        navigate('/query-details')
+    useEffect(() => {
+
+        fetch(`https://querynest-4tdw.onrender.com/api/Question/GetQuestion/${query_id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${Cookies.get('authToken')}`
+            },
+        })
+            .then((response) => {
+                console.log(response)
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log("Fetched Data:", data); // Log after state update
+                setQuery(data.question)
+                console.log(data.question)
+            })
+            .catch((err) => {
+                console.error("Failed to fetch user data:", err);
+                console.log(err.message);
+            })
+
+    }, [])
+
+    function formatDate(isoString) {
+        const date = new Date(isoString);
+        const options = { day: 'numeric', month: 'short', year: 'numeric' };
+        return date.toLocaleDateString('en-GB', options).replace(',', '');
     }
+
+
+    function isLikedByCurrentUser(query) {
+        return query.likes?.includes(Cookies.get("currentUserId"));
+    }
+
+
+    async function submitHandler(e) {
+
+        e.preventDefault();
+
+        const answerSubmitData = {
+            questionId: query_id,
+            content: answer
+        };
+
+        console.log(answerSubmitData)
+
+        const token = Cookies.get("authToken");
+
+        try {
+            const response = await fetch("https://querynest-4tdw.onrender.com/api/Answer/Create", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+
+                },
+                body: JSON.stringify(answerSubmitData),
+            });
+
+            const result = await response.json();
+            console.log(result);
+
+            if (response.ok) {
+                console.log("Answer post succesful.");
+            } else {
+                console.log(result.error || result.message);
+            }
+        } catch (error) {
+            console.log(error.message || "Something went wrong. Please try again.");
+        }
+    }
+
 
     return (
         <>
             <div className="main_container bg-white p-bottom">
                 <div className={styles.page_header}>
-                    <p onClick={() => { navigate('/') }} className={styles.backbtn}> ⇦ back</p>
+                    <p onClick={() => { navigate(-1) }} className={styles.backbtn}> ⇦ back</p>
 
                     <div className={styles.tagContainer}>
-                        <div className={styles.tag}># Teachnical</div>
+                        <div className={styles.tag}># {query.tag?.tagName}</div>
                     </div>
                 </div>
 
-                <div className={styles.query}>
-                    <div className={styles.header}>
-                        <div className={styles.profile_information}>
-                            <div className={styles.image_container}>
-                                <img src={profileImg} alt="" />
-                            </div>
-                            <div>
-                                <p className={styles.name}>trupal godhat</p>
-                                <p className={styles.username}>@trupal1211</p>
-                            </div>
-                        </div>
-                        <div className={styles.timestamp}>
-                            <p>7 jun 25</p>
-                        </div>
-                    </div>
+                <div className={home_styles.queryContainer}>
 
-                    <div className={styles.content}>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis laudantium ratione qui impedit neque optio voluptates architecto accusantium assumenda.</p>
-                    </div>
+                     <Query query_id={query._id} imgUrl={query.userId?.imageUrl} name={query.userId?.name} query={query.question} time={formatDate(query.createdAt)} username={query.userId?.username} isLiked={isLikedByCurrentUser(query)} xlikes={query.noOfLikes} />
+                
 
-                    <div className={styles.footer}>
-                        <div className={styles.like}>
-                            <button className={`${styles.like_button} ${liked ? styles.liked : ""}`} onClick={handleLike}>
-                                <div className={styles.like_img}>
-                                    {liked ? <img src={like_img} />
-                                        : <img src={nonLike_img} />}
-                                </div>
-                                <span>{likes} likes</span>
-                            </button>
-                        </div>
-                        <div className={styles.comment}>
-                            <button className={styles.comment_button}>
-                                <MessageCircle className={styles.icon} />
-                                <span>{comments} answers</span>
-                            </button>
-                        </div>
-                    </div>
+
                 </div>
 
                 <div className={styles.line}></div>
 
-                <Answer></Answer>
-                <Answer></Answer>
-                <Answer></Answer>
-                <Answer></Answer>
-                <Answer></Answer>
-                <Answer></Answer>
-                <Answer></Answer>
-                <Answer></Answer>
 
-                <div className={styles.answerpost_box}>
+
+
+
+                {/* <Answer></Answer> */}
+              
+
+                <form className={styles.answerpost_box} onSubmit={submitHandler}>
                     <div class={styles.form_group} style={{ position: 'relative' }}>
-                        <textarea id="ans" onChange={(e) => setAnswer(e.target.value)} placeholder=" " required />
+                        <textarea id="ans" onChange={(e)=>setAnswer(e.target.value)} placeholder=" " required />
                         <label className={styles.textarea_label} for="ans">Answer</label>
                     </div>
-                    <div className={styles.post_btn}>Post</div>
-                </div>
+                    <button className={styles.post_btn} type='submit'>Post</button>
+                </form >
 
             </div>
         </>

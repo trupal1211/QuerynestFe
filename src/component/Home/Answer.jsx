@@ -18,9 +18,6 @@ function Answer() {
         setLikes(liked ? likes - 1 : likes + 1);
     };
 
-    function showQueryDetails() {
-        navigate('/query-details')
-    }
 
     return (
         <>
@@ -59,8 +56,6 @@ function Answer() {
                        <p style={{marginTop:'1px'}}>4.5</p> <img src={star} />
                     </div>
                     </div>
-                   
-                    
                 </div>
             </div>
         </>

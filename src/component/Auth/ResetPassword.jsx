@@ -1,61 +1,32 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styles from "./Auth.module.css";
-import "@fontsource/kadwa";
-import "@fontsource/jua";
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import styles from './Auth.module.css'
+import '@fontsource/kadwa'
+import '@fontsource/jua'
 
-function SignUp() {
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+function ResetPassword() {
 
   const navigate = useNavigate();
+  const [password, setPassword] = useState("")
+  const [confirmPassword,setConfirmPassword]=useState("")
+  const [showPassword, setShowPassword] = useState()
+  const [showConfirmPassword, setShowConfirmPassword] = useState()
 
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [loaderStatus, setLoaderStatus] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [error, setError] = useState(""); 
+  const [success, setSuccess] = useState(""); 
+
 
   function showError(message) {
     setError(message);
-    setSuccess("");
+    setSuccess(""); 
     setTimeout(() => setError(""), 4000);
   }
 
   function showSuccess(message) {
     setSuccess(message);
-    setError("");
+    setError(""); 
     setTimeout(() => setSuccess(""), 4000);
-  }
-
-  function validateName() {
-    const nameRegex = /^[A-Za-z ]{2,20}$/;
-    if (!nameRegex.test(name)) {
-      showError("Name should contain only letters.");
-      return false;
-    }
-    return true;
-  }
-
-  function validateUsername() {
-    const usernameRegex = /^[a-zA-Z0-9._]{6,15}$/;
-    if (!usernameRegex.test(username)) {
-      showError("Username should be of 6 to 15 characters and only contain letters, numbers, and underscores");
-      return false;
-    }
-    return true;
-  }
-
-  function validateEmail() {
-    const emailRegex = /^[0-9]{2}[a-zA-Z]{5}[0-9]{3}@ddu\.ac\.in$/;
-    if (!emailRegex.test(email)) {
-      showError("Enter Valid DDU email");
-      return false;
-    }
-    return true;
   }
 
   function validatePassword() {
@@ -69,59 +40,56 @@ function SignUp() {
 
   function validateConfirmPassword() {
     if (password !== confirmPassword) {
-      showError("Passwords dose not match!");
+      showError("Passwords do not match!");
       return false;
     }
     return true;
   }
 
   async function submitHandler(e) {
-    e.preventDefault();
+    e.preventDefault()
 
     if (
-      !validateName() ||
-      !validateUsername() ||
-      !validateEmail() ||
       !validatePassword() ||
       !validateConfirmPassword()
     ) {
       return;
     }
 
-    const userData = {
-      name: name.trim(),
-      username: username.toLowerCase().trim(),
-      clgemail: email.toLowerCase().trim(),
-      password: password.trim()
+    const setNewPasswordData = {
+      email: localStorage.getItem("Passcode_Email"),
+      newPassword: password.trim()
     };
+
+    console.log(setNewPasswordData)
 
     setLoaderStatus(true)
 
     try {
-      const response = await fetch("https://querynest-4tdw.onrender.com/api/User/register", {
+      const response = await fetch("https://querynest-4tdw.onrender.com/api/User/reset-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData),
+        body: JSON.stringify(setNewPasswordData),
       });
 
       const result = await response.json();
-      console.log(result);
+      console.log(result)
 
       setLoaderStatus(false)
 
       if (response.ok) {
-        showSuccess("OTP sent! Verify your email.");
-        localStorage.setItem("clgEmail", userData.clgemail);
-
-        setTimeout(() => navigate("/verify-otp"), 2000); // Navigate after showing success message
+        showSuccess("Password Reset successful !");
+        setTimeout(() => navigate("/login"), 2000);
       } else {
-        showError(result.error || result.message || "Signup failed!");
+        showError(result.message || "Fail to Reset password");
       }
     } catch (error) {
       showError(error.message || "Something went wrong. Please try again.");
       setLoaderStatus(false)
     }
   }
+
+
 
   return (
     <>
@@ -131,31 +99,14 @@ function SignUp() {
           <div className={styles.welcome_content}>
             <p className={styles.welcome}>Welcome to</p>
             <p className={styles.querynest}>QueryNest</p>
-            <p className={styles.slogan}>- Ask, Answer, Grow</p>
+            <p className={styles.slogan}>- Ask,Answer,Grow</p>
           </div>
         </div>
         <form className={styles.form} onSubmit={submitHandler}>
-          <h2>Create a New Account</h2>
-
-          <div className={styles.form_group}>
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder=" " required />
-            <label>Name</label>
-          </div>
-
-          <div className={styles.form_group}>
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder=" " required />
-            <label>Username</label>
-          </div>
-
-          <div className={styles.form_group}>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder=" " required />
-            <label>Email</label>
-          </div>
-
+          <h2>Set New Password</h2>
           <div className={`${styles.form_group} ${styles.password_field}`}>
             <input type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} placeholder=" " required />
             <label>Password</label>
-
             {password && (
               showPassword ? (
                 <svg onClick={() => setShowPassword(false)} xmlns="http://www.w3.org/2000/svg" width="22" height="22" className="bi bi-eye-slash" viewBox="0 0 16 16">
@@ -170,13 +121,11 @@ function SignUp() {
                 </svg>
               )
             )}
-
           </div>
 
-
           <div className={`${styles.form_group} ${styles.password_field}`}>
-            <input type={showConfirmPassword ? "text" : "password"} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder=" " required />
-            <label>Confirm Password</label>
+            <input type={showConfirmPassword ? "text" : "password"} id="cpassword" onChange={(e)=>setConfirmPassword(e.target.value)} placeholder=" " required />
+            <label htmlFor="cpassword">Confirm Password</label>
 
             {confirmPassword && (
               showConfirmPassword ? (
@@ -192,15 +141,15 @@ function SignUp() {
                 </svg>
               )
             )}
-
           </div>
 
-          <button className={styles.btn} type={loaderStatus ? "button" : "submit"} disabled={loaderStatus}>
-            {!loaderStatus ? 'Sign Up' : <div className={styles.loader}></div>}
+          <button className={styles.btn} style={{ marginBottom: '35px' }}
+            type={loaderStatus ? "button" : "submit"} disabled={loaderStatus}>
+            {!loaderStatus ? 'Set Password' : <div className={styles.loader}></div>}
           </button>
 
-          <p>Already have an Account? <b onClick={() => { !loaderStatus && navigate("/login") }} className={styles.navigateLink}>Log in</b> here</p>
         </form>
+
       </div>
 
       {/* Floating Error Message */}
@@ -209,7 +158,8 @@ function SignUp() {
       {/* Floating Success Message */}
       {success && <div className={styles.successMsg}>{success}</div>}
     </>
-  );
+  )
 }
 
-export default SignUp;
+export default ResetPassword
+
