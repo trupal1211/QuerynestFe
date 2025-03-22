@@ -3,6 +3,36 @@
     background-color: #ffffff;
 }
 
+.mainloaderContainer{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.mainloader {
+    width: 55px;
+    margin: auto !important;
+    --b: 8px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 1px;
+    background: conic-gradient(#0000 10%, #dec498) content-box;
+    -webkit-mask:
+        repeating-conic-gradient(#0000 0deg, #000 1deg 20deg, #0000 21deg 36deg),
+        radial-gradient(farthest-side, #0000 calc(100% - var(--b) - 1px), #000 calc(100% - var(--b)));
+    -webkit-mask-composite: destination-in;
+    mask-composite: intersect;
+    animation: l4 1.2s infinite steps(10);
+  }
+  
+  @keyframes l4 {
+    to {
+        transform: rotate(1turn)
+    }
+  }
+
+
+
 .page_container{
     width: 90%;
     margin: auto;
@@ -67,6 +97,7 @@ p{
     font-size: 14px;
     /* background-color: rgba(39, 104, 255, 0.081); */
     padding: 4px 14px 3px;
+    margin-bottom: 6px;
     /* color: rgb(114, 114, 255); */
     border-radius: 120px;
     margin-right:12px;

@@ -87,6 +87,8 @@ function EditProfile() {
         });
     };
 
+
+
     useEffect(() => {
         fetch("https://querynest-4tdw.onrender.com/api/TagDetails/ProfileTag", {
             method: "GET",
@@ -217,13 +219,12 @@ function EditProfile() {
                 backupEmail: userProfileData.backupemail || "",
                 selectedTags: userProfileData.tags || [],
                 linkedinUrl: userProfileData.LinkedInUrl || "",
-                githubUsername: userProfileData.Githubusername || "",
+                githubUsername: userProfileData.githubUsername || "",
                 graduation: userProfileData.Graduation || "",
             });
         }
 
     }, [userProfileData])
-
 
 
 
@@ -238,7 +239,7 @@ function EditProfile() {
             username: formData.username,
             backupemail: formData.backupEmail,
             LinkedInUrl: formData.linkedinUrl,
-            Githubusername: formData.githubUsername,
+            githubUsername: formData.githubUsername,
             bio: formData.bio,
             Graduation: formData.graduation,
             tags: formData.selectedTags ,
@@ -276,7 +277,7 @@ function EditProfile() {
 
                     setTimeout(() => navigate("/profile"), 2000);
                 } else {
-                    console.log("result after failuer:" + result.error);
+                    console.log(result.error);
                     showError(result.error || result.message || "failed to Update profile");
                 }
             }
@@ -314,121 +315,178 @@ function EditProfile() {
         }
     }
 
+    function useDefaultPic(){
+        const submitData = {
+            useGithubAvatar : false,
+            githubUsername : formData.githubUsername
+        }
+
+        setProfilePicture(submitData)
+
+    }
+
+    function useGithubAvatar(){
+        const submitData = {
+            useGithubAvatar : true,
+            githubUsername : formData.githubUsername
+        }
+
+        setProfilePicture(submitData)
+
+    }
+
+
+    async function setProfilePicture(submitData){
+
+        const response = await fetch("https://querynest-4tdw.onrender.com/api/UserProfile/updateUserprofile", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${Cookies.get("authToken")}`
+            },
+            body: JSON.stringify(submitData),
+        });
+
+        const result = await response.json();
+        console.log("result:" + result);
+
+        setLoaderStatus(false)
+
+        if (response.ok) {
+            console.log("result after success:" + result);
+            showSuccess("Profile Updated successful");
+        } else {
+            console.log("result after failuer:" + result.error);
+            showError(result.error || result.message || "failed to Update profile");
+        }
+
+    }
+
 
 
     return (
         <>
             <div className="main_container bg-white">
-                <div className={styles.form} onSubmit={submitHandler}>
-                    <div className={styles.main_flex}>
-                        <div>
-                            <div className={styles.form_group}>
-                                <span><svg className={styles.back_btn} xmlns="http://www.w3.org/2000/svg" width="20" height="18" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
-                                </svg> </span>
-                                <span className={styles.editprofile}> Edit Profile</span>
-                            </div>
-                        </div>
-                        <div> </div>
-                    </div>
 
-                    <div className={styles.main_flex}>
-                        <div className={styles.flex} style={{ justifyContent: 'center' }}>
-                            <div className={styles.img_container}>
-                                <img src={formData.imageUrl} alt="" />
-                            </div>
+                { (userStatusData?.isProfileCompleted == false || (Object.keys(userStatusData).length != 0 && Object.keys(userProfileData).length != 0)
+                ?
+                 <div className={styles.form} onSubmit={submitHandler}>
+                 <div className={styles.main_flex}>
+                     <div>
+                         <div className={styles.form_group} onClick={()=>navigate(-1)}>
+                             {/* <span><svg className={styles.back_btn} xmlns="http://www.w3.org/2000/svg" width="20" height="18" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                 <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+                             </svg> </span> */}
+                             <span> ⇦ </span>
+                             <span className={styles.editprofile}> Edit Profile</span>
+                         </div>
+                     </div>
+                     <div> </div>
+                 </div>
 
-                            <div>
-                                <div className={styles.img_input}>
-                                    <input name='imageUrl' type="file" accept="image/*" onChange={handleChange} />
-                                </div>
-                                or <br />
-                                <p className={styles.import_btn}>import from Github</p>
-                            </div>
-                        </div>
+                 <div className={styles.main_flex}>
+                     <div className={styles.flex} style={{justifyContent:'center'}}>
+                         <div className={styles.img_container}>
+                             <img src={formData.imageUrl} alt="" />
+                         </div>
 
-                        <div>
-                            <div className={styles.form_group}>
-                                <input name="name" value={formData.name} onChange={handleChange} placeholder=" " required />
-                                <label htmlFor="name">Name</label>
-                            </div>
-                            <div className={styles.form_group}>
-                                <input name="username" value={formData.username} onChange={handleChange} placeholder=" " required />
-                                <label htmlFor="username">Username</label>
-                            </div>
-                        </div>
-                    </div>
+                         <div>
+                             <p className={styles.import_btn} onClick={useDefaultPic}>use Default Picture</p>
+                             or<br/>
+                             <p className={styles.import_btn} onClick={useGithubAvatar}>import from Github</p>
+                         </div>
+                     </div>
 
-                    <div className={styles.main_flex}>
-                        <div>
-                            <div className={styles.form_group}>
-                                <input name="clgemail" value={formData.clgemail} onChange={handleChange} placeholder=" " required readOnly />
-                                <label htmlFor="email">DDU Email</label>
-                            </div>
-                        </div>
-                        <div>
-                            <div className={styles.form_group}>
-                                <input name="backupEmail" value={formData.backupEmail} onChange={handleChange} placeholder=" " required />
-                                <label htmlFor="email">Personal Email</label>
-                            </div>
-                        </div>
-                    </div>
+                     <div>
+                         <div className={styles.form_group}>
+                             <input name="name" value={formData.name} onChange={handleChange} placeholder=" " required />
+                             <label htmlFor="name">Name</label>
+                         </div>
+                         <div className={styles.form_group}>
+                             <input name="username" value={formData.username} onChange={handleChange} placeholder=" " required />
+                             <label htmlFor="username">Username</label>
+                         </div>
+                     </div>
+                 </div>
 
-                    <div className={styles.main_flex}>
-                        <div>
-                            <div className={styles.form_group}>
-                                <input name="linkedinUrl" value={formData.linkedinUrl} onChange={handleChange} placeholder=" " required />
-                                <label htmlFor="linkedin">LinkedIn Profile Url</label>
-                            </div>
-                        </div>
-                        <div>
-                            <div className={styles.form_group}>
-                                <input name="githubUsername" value={formData.githubUsername} onChange={handleChange} placeholder=" " required />
-                                <label htmlFor="github">GitHub Username</label>
-                            </div>
-                        </div>
-                    </div>
+                 <div className={styles.main_flex}>
+                     <div>
+                         <div className={styles.form_group}>
+                             <input name="clgemail" value={formData.clgemail} onChange={handleChange} placeholder=" " required readOnly />
+                             <label htmlFor="email">DDU Email</label>
+                         </div>
+                     </div>
+                     <div>
+                         <div className={styles.form_group}>
+                             <input name="backupEmail" value={formData.backupEmail} onChange={handleChange} placeholder=" " required />
+                             <label htmlFor="email">Personal Email</label>
+                         </div>
+                     </div>
+                 </div>
 
-                    <div className={styles.main_flex} >
-                        <div>
-                            <div className={styles.tag_container}>
-                                <p className={styles.tag_header}>Select up to 3 tags that is relevant to your skill set</p>
-                                <div className={styles.options_list}>
-                                    {profileTagsList.map((option) => (
-                                        <button
-                                            key={option}
-                                            className={`${styles.option_btn} ${formData.selectedTags.includes(option) && styles.selected}`}
-                                            onClick={() =>{((!userStatusData.isProfileCompleted) ? handleSelect(option):alert("you cant slect tags"))}}>
-                                            # {option}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                            {/* <p>Selected: {formData.selectedTags.join(", ")}</p> */}
-                        </div>
+                 <div className={styles.main_flex}>
+                     <div>
+                         <div className={styles.form_group}>
+                             <input name="linkedinUrl" value={formData.linkedinUrl} onChange={handleChange} placeholder=" " required />
+                             <label htmlFor="linkedin">LinkedIn Profile Url</label>
+                         </div>
+                     </div>
+                     <div>
+                         <div className={styles.form_group}>
+                             <input name="githubUsername" value={formData.githubUsername} onChange={handleChange} placeholder=" " required />
+                             <label htmlFor="github">GitHub Username</label>
+                         </div>
+                     </div>
+                 </div>
 
-                        <div>
-                            <div className={styles.form_group} style={{ position: 'relative' }}>
-                                <textarea name="bio" value={formData.bio} maxLength="75" onChange={handleChange} placeholder=" " required />
-                                <label className={styles.textarea_label} htmlFor="bio">Bio</label>
-                                <div className={styles.length}>{(formData.bio || "").length} / 75</div>
-                            </div>
+                 <div className={styles.main_flex} >
+                     <div>
+                         <div className={styles.tag_container}>
+                             <p className={styles.tag_header}>Select up to 3 tags that is relevant to your skill set</p>
+                             <div className={styles.options_list}>
+                                 {profileTagsList.map((option) => (
+                                     <button
+                                         key={option}
+                                         className={`${styles.option_btn} ${formData.selectedTags.includes(option) && styles.selected}`}
+                                         onClick={() =>{((!userStatusData.isProfileCompleted) ? handleSelect(option):alert("you cant slect tags"))}}>
+                                         # {option}
+                                     </button>
+                                 ))}
+                             </div>
+                         </div>
+                         {/* <p>Selected: {formData.selectedTags.join(", ")}</p> */}
+                     </div>
 
-                            <div className={styles.form_group}>
-                                <input name='graduation' value={formData.graduation} onChange={handleChange} placeholder=" " required />
-                                <label>Graduation Details (i.e. IT-2026)</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.main_flex}>
-                        <div></div>
-                        <div>
-                            <div className={`${styles.form_group} ${styles.btn_container}`}>
-                                <div className={styles.btn} onClick={submitHandler}>Save</div>
-                            </div>
-                        </div>
-                    </div>
+                     <div>
+                         <div className={styles.form_group} style={{ position: 'relative' }}>
+                             <textarea name="bio" value={formData.bio} maxLength="75" onChange={handleChange} placeholder=" " required />
+                             <label className={styles.textarea_label} htmlFor="bio">Bio</label>
+                             <div className={styles.length}>{(formData.bio || "").length} / 75</div>
+                         </div>
+
+                         <div className={styles.form_group}>
+                             <input name='graduation' value={formData.graduation} onChange={handleChange} placeholder=" " required />
+                             <label>Graduation Details (i.e. IT-2026)</label>
+                         </div>
+                     </div>
+                 </div>
+                 <div className={styles.main_flex}>
+                     <div></div>
+                     <div>
+                         <div className={`${styles.form_group} ${styles.btn_container}`}>
+                             <div className={styles.btn} onClick={submitHandler}>Save</div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+                :
+                <div className={styles.mainloaderContainer}>
+                    <div className={styles.mainloader}></div>
                 </div>
+            )
+
+                }
+               
             </div>
         </>
     )

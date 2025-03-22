@@ -65,7 +65,7 @@ html{
   
   .search input {
     width: 100%;
-    padding: 10px 10px 10px 50px; /* Space for icon */
+    padding: 10px 10px 10px 45px; /* Space for icon */
     border: 0.1px solid #ddd;
     border-radius: 3px;
     background-color: #FFFDFB;
@@ -79,7 +79,7 @@ html{
   
   .searchIcon {
     position: absolute;
-    left: 18px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.3rem;
@@ -184,7 +184,7 @@ html{
   
     .search input {
       width: 100%; 
-      padding: 8px 10px 8px 50px; /* Space for icon */
+      padding: 8px 10px 8px 45px; /* Space for icon */
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -271,11 +271,11 @@ html{
   
     .search input {
       font-size: 14px;
-      padding: 8px 10px 8px 40px; /* Space for icon */
+      padding: 8px 10px 8px 42px; /* Space for icon */
     }
   
     .searchIcon {
-      left: 12px; 
+      left: 10px; 
       font-size: 1.2rem; 
     }
   
@@ -318,11 +318,11 @@ html{
     }
   
     .search input {
-      padding: 6px 10px 6px 35px; /* Space for icon */
+      padding: 6px 10px 6px 38px; /* Space for icon */
     }
   
     .searchIcon {
-      left: 10px; 
+      left: 8px; 
       font-size: 1.1rem; 
     }
   

@@ -2,38 +2,45 @@ import styles from '../Home/Home.module.css'
 import stylex from '../Home/QueryDetails.module.css'
 import { useNavigate , useParams } from 'react-router-dom'
 import { Query, Answer } from '../../component/components';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 
-function UserQnA(type) {
+function UserQnA({type}) {
     let navigate = useNavigate()
 
-    const {userid} = useParams()
+    const [userData,setUserData]=useState()
+    const {username} = useParams()
 
-    // useEffect(() => {
-    //     fetch("https://querynest-4tdw.onrender.com/api/UserProfile/me", {
-    //       method: "GET",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         "Authorization": `Bearer ${token}`
-    //       },
-    //     })
-    //       .then((response) => {
-    //         if (!response.ok) {
-    //           throw new Error(`Error: ${response.status} - ${response.statusText}`);
-    //         }
-    //         return response.json();
-    //       })
-    //       .then((data) => {
-    //         console.log("Fetched userProfileData:", data); // Log after state update
-    //         setUserData(data)
-    //         console.log(userData)
-    //       })
-    //       .catch((err) => {
-    //         console.error("Failed to fetch user profile data:", err);
-    //         setError(err.message);
-    //       })
-    //       .finally();
-    //   }, [])
+    function fetchUserQnAs(){
+
+      fetch(`https://querynest-4tdw.onrender.com/api/Question/userQuestion/${username}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${Cookies.get('authToken')}`
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Fetched:", data); // Log after state update
+          setUserData(data)
+          console.log(userData)
+        })
+        .catch((err) => {
+          console.error("Failed to fetch user profile data:", err);
+          console.log(err.message);
+        })
+
+    }
+
+        
+          
+      
 
     return (
         <>
@@ -42,18 +49,15 @@ function UserQnA(type) {
                     <p onClick={() => { navigate(-1) }} className={stylex.backbtn}> ⇦ back</p>
                 </div>
 
-                {type == "queries" &&
-                    <div className={styles.queryContainer}>
-                        <Query></Query>
-                        <Query></Query>
-                    </div>
-                }
+                {type=="queries" }
 
 
-                {type == "answers" && 
-                <Answer></Answer>
+                {type==="answers" && <h1>answer</h1>
               
                 }
+
+
+                
 
 
 

@@ -1,21 +1,22 @@
 import styles from './Home.module.css'
 import '@fontsource/kadwa'
 import '@fontsource/jua'
-import { useState, useEffect } from 'react'
+import { useState, useEffect,useRef } from 'react'
 import { Query } from '../components'
 import Cookies from 'js-cookie'
 
 function Home() {
 
   const [showBox, setShowBox] = useState(false);
-  const [tag, setTag] = useState(1);
+  const [tag, setTag] = useState("General Query");
   const [query, setQuery] = useState("")
   const [alltags, setAllTags] = useState("")
   const [queryFeed, setQueryFeed] = useState([])
+  const [reload, setLoad] = useState(false)
 
   // to get all tag list
   useEffect(() => {
-    fetch("https://querynest-4tdw.onrender.com/api/TagDetails/", {
+    fetch("https://querynest-4tdw.onrender.com/api/TagDetails", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -39,34 +40,51 @@ function Home() {
   }, [])
 
 
-  // for get queryfeed
+
+  const latestQueryFeed = useRef({});
+
   useEffect(() => {
-
-    fetch("https://querynest-4tdw.onrender.com/api/Question/TagmatchQuestion", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${Cookies.get('authToken')}`
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status} - ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Fetched Data:", data); // Log after state update
-        setQueryFeed(data.questions)
-        console.log(data)
-      })
-      .catch((err) => {
-        console.error("Failed to fetch user data:", err);
-        console.log(err.message);
-      })
+    fetchNewQueryFeed() // Initial fetch
+    const interval = setInterval(() => {
+      fetchNewQueryFeed(); // Fetch new data every 1 second
+    }, 1000);
+  
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
 
 
-  }, [])
+
+  function fetchNewQueryFeed() {
+
+    // for get queryfeed
+      fetch("https://querynest-4tdw.onrender.com/api/Question/TagmatchQuestion", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${Cookies.get('authToken')}`
+        },
+      })
+        .then((response) => {
+          // console.log("response(tag Question):" + response.message)
+          if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          if (JSON.stringify(latestQueryFeed.current) !== JSON.stringify(data.questions)) {
+            latestQueryFeed.current = data.questions;
+            setQueryFeed(data.questions); // ✅ Update only if new data is available
+            console.log(data)
+          }
+        })
+        .catch((err) => {
+          console.error("Failed to fetch user data:", err);
+          console.log(err.message);
+        })
+    
+
+  }
 
 
   async function submitHandler(e) {
@@ -114,7 +132,7 @@ function Home() {
     return date.toLocaleDateString('en-GB', options).replace(',', '');
   }
 
-  function isLikedByCurrentUser(query){
+  function isLikedByCurrentUser(query) {
     return query.likes.includes(Cookies.get("currentUserId"));
   }
 
@@ -123,9 +141,24 @@ function Home() {
     <>
       <div className='main_container'>
 
-        {queryFeed?.map((query) => {
-          return <Query key={query._id} imgUrl={query.userId.imageUrl} query_id={query._id} name={query.userId.name} query={query.question} time={formatDate(query.createdAt)} username={query.userId.username} isLiked={isLikedByCurrentUser(query)} xlikes={query.noOfLikes} xcomments={query.answerIds?.length} />
-        })}
+
+        {/* <div className={styles.loader}> </div> */}
+
+        {queryFeed.length > 0 ?
+          queryFeed?.map((query) => {
+            return <Query key={query._id} imgUrl={query.userId.imageUrl} query_id={query._id} name={query.userId.name} query={query.question} time={formatDate(query.createdAt)} username={query.userId.username} isLiked={isLikedByCurrentUser(query)} xlikes={query.noOfLikes} xcomments={query.answerIds?.length} />
+          })
+
+          :
+          <div className={styles.mainloaderContainer}>
+            <div className={styles.mainloader}> </div>
+          </div>
+
+        }
+
+
+
+
 
       </div>
 
@@ -143,11 +176,11 @@ function Home() {
 
               <div className={styles.tagContainer}>
 
-                {alltags.map((option) => (
+                {alltags?.map((option) => (
                   <div
                     key={option}
                     className={tag == option && styles.selected}
-                    onClick={() => { setTag(option) }}>
+                    onClick={() => {setTag(option)}}>
                     # {option}
                   </div>
                 ))}

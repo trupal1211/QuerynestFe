@@ -16,10 +16,10 @@ const router = createBrowserRouter(
       <Route path="leaderboard" element={<Leaderboard />} />
 
       <Route path="profile" element={<Profile />} />
-      <Route path="profile/:id" element={<Profile />} />
+      <Route path="profile/:username" element={<Profile />} />
       <Route path="profile/edit" element={<EditProfile />} />
-      <Route path="profile/:userid/queries" element={<UserQnA type="queries"/>} />
-      <Route path="profile/:userid/answers" element={<UserQnA type="answers"/>} />
+      <Route path="profile/:username/queries" element={<UserQnA type="queries"/>} />
+      <Route path="profile/:username/answers" element={<UserQnA type="answers"/>} />
 
       <Route path="login" element={<LogIn />} />
       <Route path="signup" element={<SignUp />} />
