@@ -1,5 +1,5 @@
 import styles from './Home.module.css'
-import img from '../../assets/Images/profile_photo.jpeg'
+import img from "../../assets/Images/profile_photo.jpeg"
 import { ThumbsUp, Heart, MessageCircle } from "lucide-react";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
