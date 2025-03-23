@@ -1,6 +1,6 @@
 import SignUp from "./Auth/SignUp";
 import LogIn from "./Auth/LogIn";
-import VerifyOtp from "./Auth/VerifyOTP";
+import VerifyOtp from "./Auth/VerifyOtp";
 import ForgotPassword from "./Auth/ForgotPassword";
 import VerifyPasscode from "./Auth/VerifyPasscode";
 import ResetPassword from "./Auth/ResetPassword";
