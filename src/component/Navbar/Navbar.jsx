@@ -5,7 +5,6 @@ import styles from './Navbar.module.css'
 import { FiSearch } from "react-icons/fi"; // Search icon
 import {NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import img from '../../assets/Images/profile_photo.jpeg'
 function Navbar() {
 
     let navigate = useNavigate();

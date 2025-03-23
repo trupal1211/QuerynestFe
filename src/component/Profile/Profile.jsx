@@ -1,5 +1,4 @@
 import styles from './Profile.module.css';
-import profile_pic from "../../assets/Images/profile_photo.jpeg"
 import linkedin_logo from '../../assets/Images/linkedin.png'
 import github_logo from '../../assets/Images/github.png'
 import {Archievement} from '../components'
