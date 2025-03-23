@@ -1,5 +1,5 @@
 import styles from './UserRow.module.css'
-import img from '../../assets/profile_photo.jpeg'
+import img from '../../assets/images/profile_photo.jpeg'
 
 function UserRow() {
     return (

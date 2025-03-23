@@ -1,13 +1,12 @@
 import styles from './EditProfile.module.css'
-import profile_pic from '../../assets/profile_photo.jpeg'
+import profile_pic from '../../assets/Images/profile_photo.jpeg'
 import { useState } from 'react';
 import tags from '../../assets/tags'
-
 
 function EditProfile() {
 
     const [image, setImage] = useState(profile_pic);
-    const [bio,setBio] = useState('');
+    const [bio, setBio] = useState('');
 
     const handleImageChange = (event) => {
         const file = event.target.files[0];
@@ -38,12 +37,12 @@ function EditProfile() {
 
                     <div className={styles.main_flex}>
                         <div>
-                        <div className={styles.form_group}>
-                            <span><svg className={styles.back_btn} xmlns="http://www.w3.org/2000/svg" width="20" height="18" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-</svg> </span>
-                            <span className={styles.editprofile}> Edit Profile</span>
-                        </div>
+                            <div className={styles.form_group}>
+                                <span><svg className={styles.back_btn} xmlns="http://www.w3.org/2000/svg" width="20" height="18" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+                                </svg> </span>
+                                <span className={styles.editprofile}> Edit Profile</span>
+                            </div>
                         </div>
                         <div> </div>
                     </div>
@@ -109,23 +108,23 @@ function EditProfile() {
                     <div className={styles.main_flex} >
                         <div>
                             <div className={styles.tag_container}>
-                            <p className={styles.tag_header}>Select up to 3 tags that is relevant to your skill set</p>
-                            <div className={styles.options_list}>
-                                {tags.map((option) => (
-                                    <button
-                                        key={option}
-                                        className={`${styles.option_btn} ${selected.includes(option) && styles.selected}`} onClick={() => handleSelect(option)}>
-                                        # {option}
-                                    </button>
-                                ))}
+                                <p className={styles.tag_header}>Select up to 3 tags that is relevant to your skill set</p>
+                                <div className={styles.options_list}>
+                                    {tags.map((option) => (
+                                        <button
+                                            key={option}
+                                            className={`${styles.option_btn} ${selected.includes(option) && styles.selected}`} onClick={() => handleSelect(option)}>
+                                            # {option}
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
-                            </div>
-                                 {/* <p>Selected: {selected.join(", ")}</p> */}
+                            {/* <p>Selected: {selected.join(", ")}</p> */}
                         </div>
 
                         <div>
-                            <div class={styles.form_group} style={{position:'relative'}}>
-                                <textarea id="bio" maxLength="75" onChange={(e)=>setBio(e.target.value)} placeholder=" " required />
+                            <div class={styles.form_group} style={{ position: 'relative' }}>
+                                <textarea id="bio" maxLength="75" onChange={(e) => setBio(e.target.value)} placeholder=" " required />
                                 <label className={styles.textarea_label} for="bio">Bio</label>
                                 <div className={styles.length}>{bio.length} / 75</div>
                             </div>
@@ -134,33 +133,23 @@ function EditProfile() {
                                 <input type="github" id="github" placeholder=" " required />
                                 <label for="github">Graduation Details (i.e. IT-2026)</label>
                             </div>
-                            
+
 
                         </div>
-
-                    </div>  
-
+                    </div>
                     <div className={styles.main_flex}>
                         <div></div>
                         <div>
-                        <div className={styles.form_group}>
-                        <div className={styles.btn} onClick={()=>navigate('/login')}>Save</div>         
+                            <div className={`${styles.form_group} ${styles.btn_container}`}>
+                                <div className={styles.btn} onClick={() => navigate('/login')}>Save</div>
+
+                            </div>
 
                         </div>
 
-                        </div>
-          
                     </div>
 
-
-            
-
-
                 </div>
-
-
-
-
 
             </div>
         </>

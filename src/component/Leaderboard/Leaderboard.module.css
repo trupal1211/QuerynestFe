@@ -1,30 +1,54 @@
-.main_container.bg-white{
+.main_container.bg-white {
     background-color: white;
-}
-
-/* Container */
-.container {
+  }
+  
+  /* Container */
+  .container {
     width: 85%;
-    margin:auto ;
-    padding: 20px;
-    border-radius: 12px;
-    background: #fff;
-    text-align: center;
+    margin: 10px auto 20px;
+    padding: 10px 20px;
+    padding-bottom: 8px;
     box-sizing: border-box;
+    line-height: 1 !important;
+    /* background-color:#f8eaff; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: relative;
+  }
+  
+  .tag_container{
+    display: none;
+    width: 82%;
+    margin: auto;
+    padding: 10px 20px;
+  }
+  
+  .ltime{
+    font-size: 16px;
+    font-weight: normal;
+    color: #919191;
+  }
+  
+  .mtime{
+    display: none;
+    font-size: 16px;
+    font-weight: normal;
+    color: #919191;
   }
   
   /* Title */
   .title {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 1rem;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 14px;
   }
   
   /* Button */
   .button {
     padding: 10px 20px;
-    margin-left: 20px;
     font-size: 16px;
     cursor: pointer;
     border: none;
@@ -36,16 +60,14 @@
     justify-content: space-between;
     align-items: center;
   }
-    
   
   /* Dropdown List (Position Absolute to Overlay Content) */
   .list {
-    width: 260px;
-    position: absolute;
-    box-sizing: border-box;
-    left: 0;
+    width: 240px;
+    position: absolute !important;
     right: 0;
-    list-style: none;
+    top: 0;
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
     border: 1px solid #ccc;
@@ -59,15 +81,28 @@
   
   /* Dropdown Above or Below */
   .listDown {
-    top: 65px; /* Below Button */
-    left: 20px;
+    top: 65px;
+    /* Below Button */
+    right: 0px;
   }
   
   /* Dropdown Item */
   .item {
-    padding: 10px;
+    padding: 14px;
     cursor: pointer;
     transition: background 0.3s;
+    text-align: center;
+  }
+  
+  .tag{
+    font-size: 14px;
+    padding: 8px 18px 7px 14px !important;
+    font-weight: normal;
+    border-radius: 120px;
+    font-size: 13px;
+    color: #68428f;
+    display: inline;
+    background-color: rgb(245, 236, 255);
   }
   
   .item:hover {
@@ -76,7 +111,62 @@
   
   /* Highlight Selected Option */
   .selected {
-    background: #eaeeff;
+    background: #f8eaff;
     font-weight: bold;
   }
   
+  
+  
+  
+  @media(max-width:500px){
+    .listDown {
+      top: 45px;
+      right: 0px;
+    }
+  
+    .container {
+      width: 90%;
+      padding: 0px;
+      padding-bottom: 6px;
+      margin: 16px auto 8px;
+    }
+  
+    .title{
+      font-size: 20px;
+    }
+  
+    .ltime{
+      display: none;
+  
+    }
+  
+    .mtime{
+      display: block;
+    }
+  
+    .list{
+      font-size: 14px;
+      width: 200px;
+    }
+  
+    .button{
+      font-size: 14px;
+    }
+  
+    .tag{
+      padding: 2px 18px !important;
+    }
+  
+    .tag_container{
+      display: flex !important;
+      gap: 12px;
+      width: 90%;
+      padding-top: 0;
+      padding-left: 14px;
+      padding-bottom: 16px;
+    }
+  
+    .max_tag{
+      display: none;
+    }
+  }
